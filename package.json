@@ -1,14 +1,16 @@
 {
   "name": "gc-components",
   "version": "0.0.1",
-  "description": "React + ReactHooks + TypeScript Components",
+  "description": "React + ReactHooks Components",
   "private": false,
   "scripts": {
     "build:publish": "npm run build:cjs && npm run build:es && npm run build:umd && npm run build:css",
     "build:umd": "webpack --config ./build/webpack.config.prod.js",
     "build:cjs": "rimraf lib && cross-env BABEL_ENV=cjs babel components -d lib --source-maps --ignore **/__tests__",
     "build:es": "rimraf es && cross-env BABEL_ENV=es babel components -d es --source-maps --ignore **/__tests__",
-    "build:css": "gulp --gulpfile ./build/gulpfile.js compile"
+    "build:css": "gulp --gulpfile ./build/gulpfile.js compile",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "files": [
     "lib",
@@ -24,7 +26,6 @@
   "keywords": [
     "React",
     "ReactHooks",
-    "TypeScript",
     "Components"
   ],
   "author": "garaschan",
@@ -35,6 +36,7 @@
   "homepage": "https://github.com/ChenGuanglin0924/gc-components#readme",
   "dependencies": {
     "@babel/runtime": "^7.6.3",
+    "classnames": "^2.2.6",
     "core-js": "^3.3.4",
     "react": "^16.11.0",
     "react-dom": "^16.11.0"
@@ -42,10 +44,14 @@
   "devDependencies": {
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
     "@babel/preset-typescript": "^7.6.0",
+    "@storybook/addon-actions": "^5.2.5",
+    "@storybook/addons": "^5.2.5",
+    "@storybook/react": "^5.2.5",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.3",
     "autoprefixer": "^9.7.0",

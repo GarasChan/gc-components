@@ -1,5 +1,5 @@
 # gc-components
-React + ReactHooks + TypeScript Components
+React + ReactHooks Components
 
 # 按需加载
 1. 如果你没使用` babel `，那么你可以按照以下方法写，实现组件和样式按需加载：
