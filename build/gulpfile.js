@@ -63,10 +63,10 @@ gulp.task("dist-css", () => {
     .pipe(less())
     .pipe(autoprefixer())
 
-    .pipe(concat(`${name}.css`))
-    .pipe(size())
-    .pipe(sourcemaps.write("."))
-    .pipe(gulp.dest(distDir))
+    // .pipe(concat(`${name}.css`))
+    // .pipe(size())
+    // .pipe(sourcemaps.write("."))
+    // .pipe(gulp.dest(distDir))
 
     .pipe(concat(`${name}.min.css`))
     .pipe(size())

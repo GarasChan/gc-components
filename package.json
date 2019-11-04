@@ -10,7 +10,7 @@
     "build:es": "rimraf es && cross-env BABEL_ENV=es babel components -d es --source-maps --ignore **/__tests__",
     "build:css": "gulp --gulpfile ./build/gulpfile.js compile",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -o docs"
   },
   "files": [
     "lib",

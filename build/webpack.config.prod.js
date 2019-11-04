@@ -12,17 +12,16 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
     mode: 'production',
-    // mode: 'production',
     devtool: "#source-map",
     entry: {
-        'GcComponents': ['./components/index.js']
+        'gc-components': ['./components/index.js']
     },
     output: {
         path: resolve('dist'),
-        library: "[name]",
+        library: "gc",
         libraryTarget: "umd",
         umdNamedDefine: true,
-        filename: "[name].js"
+        filename: "[name].min.js"
     },
     module: {
         rules: [

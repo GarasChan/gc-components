@@ -1,0 +1,125 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+button {
+  border: 0;
+  font-family: "Microsoft YaHei", sans-serif !important;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  line-height: normal;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.gc-button {
+  display: inline-block;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  background-color: #0081E2;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+.gc-button:hover {
+  background-color: #269FF0;
+  color: #fff;
+}
+.gc-button .icon {
+  font-size: 16px;
+}
+.gc-button .space {
+  display: inline-block;
+  width: 4px;
+}
+.gc-button .value {
+  font-size: inherit;
+}
+.gc-button.disabled {
+  background-color: rgba(0, 129, 226, 0.35);
+  color: rgba(255, 255, 255, 0.85);
+  cursor: default;
+}
+
+
+/*# sourceMappingURL=main.css.map*/
