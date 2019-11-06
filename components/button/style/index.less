@@ -2,39 +2,32 @@
 
 .gc-button {
     display: inline-block;
+    box-sizing: border-box;
     height: 32px;
     line-height: 32px;
     padding: 0 16px;
     border-radius: 4px;
-    font-size: 14px;
+    border: 1px solid @border-color-base;
     text-align: center;
-    color: @white;
-    background-color: @primary-color;
-    box-sizing: border-box;
+    color: @text-color;
+    background-color: @white;
+    white-space: nowrap;
     user-select: none;
     cursor: pointer;
+    transition: all .2s;
 
     &:hover {
-        background-color: @primary-hover-color;
+        opacity: .8;
+        transition: all .2s;
+    }
+
+    &.primary {
+        background-color: @primary-color;
         color: @white;
     }
 
-    .icon {
-        font-size: 16px;
-    }
-
-    .space {
-        display: inline-block;
-        width: 4px;
-    }
-
-    .value {
-        font-size: inherit;
-    }
-
     &.disabled {
-        background-color: fade(@primary-color, 35);
-        color: @white-2;
+        background-color: @disabled-color;
         cursor: default;
     }
 }

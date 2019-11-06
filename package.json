@@ -4,14 +4,17 @@
   "description": "React + ReactHooks Components",
   "private": false,
   "scripts": {
-    "build:publish": "npm run build:cjs && npm run build:es && npm run build:umd && npm run build:css",
-    "build:umd": "webpack --config ./build/webpack.config.prod.js",
+    "build:publish": "npm run build:cjs && npm run build:es && npm run build:umd && npm run build:css && npm run build:sb",
     "build:cjs": "rimraf lib && cross-env BABEL_ENV=cjs babel components -d lib --source-maps --ignore **/__tests__",
     "build:es": "rimraf es && cross-env BABEL_ENV=es babel components -d es --source-maps --ignore **/__tests__",
+    "build:umd": "webpack --config ./build/webpack.config.prod.js",
     "build:css": "gulp --gulpfile ./build/gulpfile.js compile",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o docs"
+    "build:sb": "rimraf docs && build-storybook -o docs",
+    "dev:sb": "start-storybook -p 6006"
   },
+  "pre-commit": [
+    "build:publish"
+  ],
   "files": [
     "lib",
     "es",
@@ -38,6 +41,7 @@
     "@babel/runtime": "^7.6.3",
     "classnames": "^2.2.6",
     "core-js": "^3.3.4",
+    "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0"
   },
@@ -50,6 +54,8 @@
     "@babel/preset-react": "^7.6.3",
     "@babel/preset-typescript": "^7.6.0",
     "@storybook/addon-actions": "^5.2.5",
+    "@storybook/addon-info": "^5.2.5",
+    "@storybook/addon-knobs": "^5.2.5",
     "@storybook/addons": "^5.2.5",
     "@storybook/react": "^5.2.5",
     "@types/react": "^16.9.11",
@@ -58,6 +64,7 @@
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-import": "^1.12.2",
+    "babel-plugin-react-docgen": "^3.2.0",
     "clean-webpack-plugin": "^3.0.0",
     "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
@@ -79,7 +86,9 @@
     "open-browser-webpack-plugin": "0.0.5",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
+    "pre-commit": "^1.2.2",
     "regenerator-runtime": "^0.13.3",
+    "storybook-readme": "^5.0.8",
     "typescript": "^3.6.4",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^2.2.0",

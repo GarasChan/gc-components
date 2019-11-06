@@ -70,7 +70,7 @@ import 'gc-components/es/button/style/css';
 // import 'gc-components/es/button/style'
 ```
 从而实现组件和样式的按需加载，无需手动引入样式。
-## 开发进程
+## 开发中...
 - [ ] Button  
 - [ ] Checkbox
 - [ ] Radio

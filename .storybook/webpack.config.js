@@ -6,32 +6,41 @@
 // When you add this file, we won't add the default configurations which is similar
 // to "React Create App". This only has babel loader to load JavaScript.
 
+const { resolve } = require('../build/util');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = {
-  plugins: [
+// Export a function. Accept the base config as the only param.
+module.exports = async ({ config, mode }) => {
+  // `mode` has a value of 'DEVELOPMENT' or 'PRODUCTION'
+  // You can change the configuration based on that.
+  // 'PRODUCTION' is used when building the static version of storybook.
+
+  // Make whatever fine-grained changes you need
+  config.plugins.push(
     new MiniCssExtractPlugin({
       filename: '[name].css'
     })
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.(jsx|js)$/,
-        use: ['babel-loader']
-      },
-      {
-        test: /\.(css|less)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: [require('autoprefixer')]
-            }
-          }, 'less-loader']
-      }
-    ],
-  },
-};
+  )
+  config.module.rules.push(
+    {
+      test: /\.(jsx|js)$/,
+      use: ['babel-loader']
+    },
+    {
+      test: /\.(css|less)$/,
+      exclude: resolve('node_modules'),
+      use: [
+        MiniCssExtractPlugin.loader,
+        'css-loader',
+        {
+          loader: 'postcss-loader',
+          options: {
+            plugins: [require('autoprefixer')]
+          }
+        }, 'less-loader']
+    }
+  )
+
+  // Return the altered config
+  return config;
+}

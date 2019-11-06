@@ -33,7 +33,8 @@ const plugins = [
             useESModules 
         }
     ],
-    '@babel/plugin-proposal-class-properties'
+    '@babel/plugin-proposal-class-properties',
+    "react-docgen"
 ];
 
 module.exports = { presets, plugins };
