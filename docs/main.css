@@ -85,39 +85,36 @@ button {
 }
 .gc-button {
   display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   height: 32px;
   line-height: 32px;
   padding: 0 16px;
   border-radius: 4px;
-  font-size: 14px;
+  border: 1px solid #d9d9d9;
   text-align: center;
-  color: #fff;
-  background-color: #0081E2;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(255, 255, 255);
+  white-space: nowrap;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   cursor: pointer;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
 }
 .gc-button:hover {
-  background-color: #269FF0;
-  color: #fff;
+  opacity: 0.8;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
 }
-.gc-button .icon {
-  font-size: 16px;
-}
-.gc-button .space {
-  display: inline-block;
-  width: 4px;
-}
-.gc-button .value {
-  font-size: inherit;
+.gc-button.primary {
+  background-color: #1890ff;
+  color: rgba(255, 255, 255);
 }
 .gc-button.disabled {
-  background-color: rgba(0, 129, 226, 0.35);
-  color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(0, 0, 0, 0.25);
   cursor: default;
 }
 
