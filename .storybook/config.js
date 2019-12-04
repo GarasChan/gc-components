@@ -12,7 +12,7 @@ function loadStories() {
 }
 
 addDecorator(withInfo);
-addDecorator(addReadme);
+// addDecorator(addReadme);
 
 // 参数配置
 addParameters({
@@ -23,21 +23,21 @@ addParameters({
       base: 'light',
       brandTitle: 'gc-components',
       brandUrl: 'https://garaschan.online',
-      brandImage: 'https://garaschan.online/assets/images/logo.png',
+      // brandImage: 'https://garaschan.online/assets/images/logo.png',
     })
   },
-  info: {
-    inline: true
-  },
-  knobs: {
-    timestamps: true,
-    escapeHTML: true
-  },
-  readme: {
-    codeTheme: 'a11y-dark', // 'xonokai'
-    DocPreview: ({children}) => <div style={{padding: '20px 40px'}}>{children}</div>,
-    // sidebar: README
-  }
+  // info: {
+  //   inline: true
+  // },
+  // knobs: {
+  //   timestamps: true,
+  //   escapeHTML: true
+  // },
+  // readme: {
+  //   codeTheme: 'a11y-dark', // 'xonokai'
+  //   DocPreview: ({children}) => <div style={{padding: '20px 40px'}}>{children}</div>,
+  //   // sidebar: README
+  // }
 });
 
 configure(loadStories, module);

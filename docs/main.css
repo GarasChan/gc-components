@@ -1,87 +1,37 @@
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video,
-button {
-  border: 0;
-  font-family: "Microsoft YaHei", sans-serif !important;
-  font-size: 14px;
-  margin: 0;
-  padding: 0;
-  outline: 0;
-  line-height: normal;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+/***********************************************************************************
+                                主色
+***********************************************************************************/
+/***********************************************************************************
+                                功能色
+***********************************************************************************/
+/***********************************************************************************
+                                中性色
+***********************************************************************************/
+/***********************************************************************************
+                                base
+***********************************************************************************/
+/***********************************************************************************
+                                overPanel
+***********************************************************************************/
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 .gc-button {
   display: inline-block;
@@ -91,31 +41,127 @@ button {
   line-height: 32px;
   padding: 0 16px;
   border-radius: 4px;
-  border: 1px solid #d9d9d9;
+  border: 1px solid #D9D9D9;
   text-align: center;
-  color: rgba(0, 0, 0, 0.65);
-  background-color: rgba(255, 255, 255);
+  color: #666666;
+  font-size: 14px;
+  outline: none;
+  background-color: #FFFFFF;
   white-space: nowrap;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   cursor: pointer;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
+  -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.gc-button .gc-icon + span {
+  margin-left: 8px;
+}
+.gc-button.icon-only {
+  width: 32px;
+  padding: 0;
+}
+.gc-button.loading .gc-icon svg {
+  -webkit-animation: spin 1.5s linear infinite;
+          animation: spin 1.5s linear infinite;
 }
 .gc-button:hover {
-  opacity: 0.8;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
+  border-color: #269FF0;
+  color: #269FF0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 .gc-button.primary {
-  background-color: #1890ff;
-  color: rgba(255, 255, 255);
+  background-color: #0081E2;
+  color: #FFFFFF;
+  border-color: #0081E2;
 }
-.gc-button.disabled {
-  background-color: rgba(0, 0, 0, 0.25);
+.gc-button.primary:hover {
+  border-color: #269FF0;
+  background-color: #269FF0;
+}
+.gc-button.primary:active {
+  background-color: #0065BD;
+}
+.gc-button.danger {
+  background-color: #F5212D;
+  color: #FFFFFF;
+  border-color: #F5212D;
+}
+.gc-button.danger:hover {
+  border-color: #FF4A4D;
+  background-color: #FF4A4D;
+}
+.gc-button.danger:active {
+  background-color: #CF1120;
+}
+.gc-button[disabled] {
+  background-color: #CCCCCC;
+  border-color: #CCCCCC;
+  color: #999999;
   cursor: default;
+}
+.gc-button-group {
+  display: inline-block;
+  background-color: transparent;
+}
+.gc-button-group .gc-button {
+  position: relative;
+  border-radius: 0;
+  margin-right: 0;
+}
+.gc-button-group .gc-button:hover {
+  z-index: 1;
+}
+.gc-button-group .gc-button:not(:first-child) {
+  margin-left: -1px;
+}
+.gc-button-group .gc-button:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.gc-button-group .gc-button:last-child {
+  border-radius: 0 4px 4px 0;
+}
+.gc-button-group .gc-button.primary:not(:first-child)::before,
+.gc-button-group .gc-button.danger:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.35);
+  height: 80%;
+  width: 1px;
+  left: -1px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  z-index: 2;
+}
+
+/***********************************************************************************
+                                主色
+***********************************************************************************/
+/***********************************************************************************
+                                功能色
+***********************************************************************************/
+/***********************************************************************************
+                                中性色
+***********************************************************************************/
+/***********************************************************************************
+                                base
+***********************************************************************************/
+/***********************************************************************************
+                                overPanel
+***********************************************************************************/
+.gc-icon {
+  font-size: 16px;
+}
+.gc-icon svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
 }
 
 

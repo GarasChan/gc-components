@@ -1,17 +1,70 @@
-@import '../initialize.less';
+@theme: 'light';
+/***********************************************************************************
+                                主色
+***********************************************************************************/
+@primary-color: #0081E2;
+@primary-hover-color: #269FF0;
+@primary-active-color: #0065BD;
+@primary-select-color: #E6F8FF;
+@primary-disable-color: fade(@primary-color, 15%);
 
-@primary-color: #1890ff; // 全局主色
-@link-color: #1890ff; // 链接色
-@success-color: #52c41a; // 成功色
-@warning-color: #faad14; // 警告色
-@error-color: #f5222d; // 错误色
-// @font-size-base: 14px; // 主字号
-@heading-color: rgba(0, 0, 0, 0.85); // 标题色
-@text-color: rgba(0, 0, 0, 0.65); // 主文本色
-@text-color-secondary : rgba(0, 0, 0, .45); // 次文本色
-@disabled-color : rgba(0, 0, 0, .25); // 失效色
-@border-radius-base: 4px; // 组件/浮层圆角
-@border-color-base: #d9d9d9; // 边框色
-@box-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.15); // 浮层阴影
-@white: rgba(255, 255, 255); // 白色
-@black: rgba(0, 0, 0); // 黑色
+/***********************************************************************************
+                                功能色
+***********************************************************************************/
+@info-color: #0081E2;
+@success-color: #53C41A;
+@warning-color: #FAAD15;
+@error-color: #F5212D;
+@error-hover-color: #FF4A4D;
+@error-active-color: #CF1120;
+@error-disable-color: fade(@error-color, 15%);
+
+/***********************************************************************************
+                                中性色
+***********************************************************************************/
+@background-color-p8: #FFFFFF;
+@background-color-p11: #FFFFFF;
+@background-color-p14: #F7F9FB;
+@background-color-p16: #F7F7F7;
+@background-color-p20: #F5F5F5;
+@background-color-p24: #F1F1F1;
+@background-color-p28: #E9E9E9;
+@background-color-p30: #D9D9D9;
+@font-color-w0: #333333;
+@font-color-w8: #666666;
+@font-color-w16: #999999;
+@font-color-w20: #CCCCCC;
+@font-color-w24: #CCCCCC;
+
+/***********************************************************************************
+                                base
+***********************************************************************************/
+@font-size: 14px;
+@font-icon-size: 16px;
+@prefix: gc;
+@white: #FFFFFF;
+@black: #000000;
+@header-color: @font-color-w0;
+@background-color: @white;
+@text-color: @font-color-w8;
+@text-secondary-color: @font-color-w16;
+@text-third-color: @font-color-w20;
+@border-color: @background-color-p30;
+@divide-color: @background-color-p28;
+@disable-color: @font-color-w24;
+@icon-active-shadow: 0px 0px 6px 1px @primary-color;
+@dashed-divide-color: @divide-color;
+
+/***********************************************************************************
+                                overPanel
+***********************************************************************************/
+@overPanel-bg-1: @white;
+@overPanel-shadow-1: 2px 0px 7px 0px fade(@black, 45%);
+@overPanel-bg-2: @white;
+@overPanel-shadow-2: 0px 8px 8px 0px fade(@black, 15%);
+@overPanel-bg-3: @white;
+@overPanel-shadow-3: 0px 2px 4px 0px fade(@black, 35%);
+@overPanel-bg-4: @white;
+@overPanel-shadow-4: 0px 2px 4px 0px fade(@black, 35%);
+@overPanel-bg-5: @white;
+@overPanel-shadow-5: 0px 2px 4px 0px fade(@black, 17%);

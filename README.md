@@ -71,7 +71,8 @@ import 'gc-components/es/button/style/css';
 ```
 从而实现组件和样式的按需加载，无需手动引入样式。
 ## 开发中...
-- [ ] Button  
+- [x] Icon  
+- [x] Button  
 - [ ] Checkbox
 - [ ] Radio
 - [ ] Select

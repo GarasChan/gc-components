@@ -1,33 +1,118 @@
 @import '../../assets/style/themes/default.less';
+@import '../../assets/style/animate.less';
 
-.gc-button {
+.@{prefix}-button {
     display: inline-block;
     box-sizing: border-box;
     height: 32px;
     line-height: 32px;
     padding: 0 16px;
     border-radius: 4px;
-    border: 1px solid @border-color-base;
+    border: 1px solid @border-color;
     text-align: center;
     color: @text-color;
+    font-size: @font-size;
+    outline: none;
     background-color: @white;
     white-space: nowrap;
     user-select: none;
     cursor: pointer;
-    transition: all .2s;
+    transition: all .3s cubic-bezier(.645, .045, .355, 1);
+
+    .@{prefix}-icon + span {
+        margin-left: 8px;
+    }
+
+    &.icon-only {
+        width: 32px;
+        padding: 0;
+    }
+
+    &.loading .@{prefix}-icon svg {
+        animation: spin 1.5s linear infinite;
+    }
 
     &:hover {
-        opacity: .8;
-        transition: all .2s;
+        border-color: @primary-hover-color;
+        color: @primary-hover-color;
+        transition: all .3s cubic-bezier(.645, .045, .355, 1);
     }
 
     &.primary {
         background-color: @primary-color;
         color: @white;
+        border-color: @primary-color;
+
+        &:hover {
+            border-color: @primary-hover-color;
+            background-color: @primary-hover-color;
+        }
+
+        &:active {
+            background-color: @primary-active-color;
+        }
     }
 
-    &.disabled {
-        background-color: @disabled-color;
+    &.danger {
+        background-color: @error-color;
+        color: @white;
+        border-color: @error-color;
+
+        &:hover {
+            border-color: @error-hover-color;
+            background-color: @error-hover-color;
+        }
+
+        &:active {
+            background-color: @error-active-color;
+        }
+    }
+    
+    &[disabled] {
+        background-color: @disable-color;
+        border-color: @disable-color;
+        color: @text-secondary-color;
         cursor: default;
+    }
+}
+
+.@{prefix}-button-group {
+    display: inline-block;
+    background-color: transparent;
+
+    .@{prefix}-button {
+        position: relative;
+        border-radius: 0;
+        margin-right: 0;
+
+        &:hover {
+            z-index: 1;
+        }
+
+        &:not(:first-child) {
+            margin-left: -1px;
+        }
+
+        &:first-child {
+            border-radius: 4px 0 0 4px;
+        }
+        &:last-child {
+            border-radius: 0 4px 4px 0;
+        }
+    }
+
+    .@{prefix}-button.primary,
+    .@{prefix}-button.danger {
+        &:not(:first-child)::before {
+            content: '';
+            position: absolute;
+            background-color: fade(#FFFFFF, 35%);
+            height: 80%;
+            width: 1px;
+            left: -1px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
     }
 }
