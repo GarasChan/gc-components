@@ -56,6 +56,11 @@
   -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
+.gc-button .gc-icon {
+  position: relative;
+  top: -0.09em;
+  vertical-align: middle;
+}
 .gc-button .gc-icon + span {
   margin-left: 8px;
 }
@@ -101,7 +106,7 @@
   background-color: #CCCCCC;
   border-color: #CCCCCC;
   color: #999999;
-  cursor: default;
+  cursor: not-allowed;
 }
 .gc-button-group {
   display: inline-block;
@@ -154,6 +159,8 @@
                                 overPanel
 ***********************************************************************************/
 .gc-icon {
+  display: inline-block;
+  line-height: 0;
   font-size: 16px;
 }
 .gc-icon svg {
@@ -162,6 +169,111 @@
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
+}
+
+/***********************************************************************************
+                                主色
+***********************************************************************************/
+/***********************************************************************************
+                                功能色
+***********************************************************************************/
+/***********************************************************************************
+                                中性色
+***********************************************************************************/
+/***********************************************************************************
+                                base
+***********************************************************************************/
+/***********************************************************************************
+                                overPanel
+***********************************************************************************/
+.gc-checkbox {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #666666;
+  font-size: 14px;
+  display: inline-block;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+.gc-checkbox .gc-checkbox-icon {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 0;
+  top: -0.09em;
+  vertical-align: middle;
+}
+.gc-checkbox .gc-checkbox-icon input[type='checkbox'] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+.gc-checkbox .gc-checkbox-icon .gc-checkbox-inner {
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  border: 1px solid #0081E2;
+  -webkit-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+  transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+}
+.gc-checkbox .gc-checkbox-icon .gc-checkbox-inner::after {
+  content: "";
+  position: absolute;
+  border: 2px solid #fff;
+  border-left: 0;
+  border-top: 0;
+  width: 3px;
+  height: 9px;
+  left: 50%;
+  top: 45%;
+  border-radius: 2px;
+  -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(0);
+          transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  -webkit-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+  transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+.gc-checkbox .gc-checkbox-icon + span {
+  margin-left: 8px;
+}
+.gc-checkbox.checked .gc-checkbox-inner {
+  background-color: #0081E2;
+  -webkit-transition: all 0.1s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+  transition: all 0.1s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+}
+.gc-checkbox.checked .gc-checkbox-inner::after {
+  -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(1);
+          transform: translate(-50%, -50%) rotate(45deg) scale(1);
+  -webkit-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+  transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+}
+.gc-checkbox[disabled] {
+  color: #CCCCCC;
+  cursor: not-allowed;
+}
+.gc-checkbox[disabled] .gc-checkbox-inner {
+  background-color: inherit;
+  border-color: #CCCCCC;
+}
+.gc-checkbox[disabled] .gc-checkbox-inner::after {
+  opacity: 0;
+  border-color: #CCCCCC;
+}
+.gc-checkbox[disabled].checked .gc-checkbox-inner::after {
+  opacity: 1;
 }
 
 

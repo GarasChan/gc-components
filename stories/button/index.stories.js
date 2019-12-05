@@ -1,21 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { Button, ButtonGroup } from '../../components/index';
 import { Icon } from '../../components/index';
 import '../../components/button/style';
 import '../../components/icon/style';
-import README from './README.md';
 
 storiesOf('Button', module)
     .addDecorator(storyFn => <div style={{ textAlign: 'center' }}>{storyFn()}</div>)
-    .addDecorator(withKnobs)
     .add(
         'theme',
         () => {
             return (
-                <div>
+                <div className='demo'>
                     <Button>测试按钮</Button>
                     <Button type='primary'>测试按钮</Button>
                     <Button type='danger' onClick={action('button-click')}>测试按钮</Button>
@@ -28,7 +25,7 @@ storiesOf('Button', module)
         'icon',
         () => {
             return (
-                <div>
+                <div className='demo'>
                     <Button icon='search'></Button>
                     <Button type='primary' icon='refresh'></Button>
                 </div>
@@ -39,7 +36,7 @@ storiesOf('Button', module)
         'icon-text',
         () => {
             return (
-                <div>
+                <div className='demo'>
                     <Button icon='search'>搜索</Button>
                     <Button type='primary' icon='share'>分享</Button>
                 </div>
@@ -50,7 +47,7 @@ storiesOf('Button', module)
         'with Icon',
         () => {
             return (
-                <div>
+                <div className='demo'>
                     <Button>
                         <Icon type='search' />
                     </Button>
@@ -79,7 +76,7 @@ storiesOf('Button', module)
             }, [loading])
             
             return (
-                <div>
+                <div className='demo'>
                     <Button icon='uploading' loading={loading} onClick={() => { setLoading(true) }}></Button>
                     <Button type='primary' loading></Button>
                     <Button icon='path' loading={true}>刷新</Button>
@@ -98,15 +95,15 @@ storiesOf('Button', module)
         'button-group',
         () => {
             return (
-                <div>
-                    <div style={{margin: '16px'}}>
+                <div className='demo'>
+                    <div>
                         <ButtonGroup>
                             <Button icon='top-page' />
                             <Button icon='play' />
                             <Button icon='end-page' />
                         </ButtonGroup>
                     </div>
-                    <div style={{margin: '16px'}}>
+                    <div>
                         <ButtonGroup>
                             <Button type='primary' icon='arrow-left'>
                                 上一页
@@ -116,7 +113,7 @@ storiesOf('Button', module)
                             </Button>
                         </ButtonGroup>
                     </div>
-                    <div style={{margin: '16px'}}>
+                    <div>
                         <ButtonGroup>
                             <Button type='danger' icon='point-layer'></Button>
                             <Button type='danger' icon='line-layer'></Button>
@@ -128,32 +125,3 @@ storiesOf('Button', module)
             )
         }
     )
-    // .add(
-    //     'theme',
-    //     () => {
-    //         const children = text('children', 'test');
-    //         const props = {
-    //             type: select('type', { default: 'default', primary: 'primary', }, 'default'),
-    //             disabled: boolean('disabled', false),
-    //             onClick: action('button-click')
-    //         }
-    //         return <Button {...props}>{children}</Button>
-    //     },
-    //     {
-    //         readme: {
-    //             content: README
-    //         }
-    //     }
-    // )
-    // .add(
-    //     'link',
-    //     () => {
-    //         const children = text('children', 'test');
-    //         const props = {
-    //             href: text('href', 'https://chenguanglin0924.github.io/gc-components'),
-    //             target: text('target', '_blank'),
-    //             disabled: boolean('disabled', false)
-    //         }
-    //         return <Button {...props}>{children}</Button>
-    //     }
-    // )

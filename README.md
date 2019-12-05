@@ -73,7 +73,7 @@ import 'gc-components/es/button/style/css';
 ## 开发中...
 - [x] Icon  
 - [x] Button  
-- [ ] Checkbox
+- [x] Checkbox
 - [ ] Radio
 - [ ] Select
 - [ ] Input

@@ -1,0 +1,90 @@
+@import '../../assets/style/themes/default.less';
+
+.@{prefix}-checkbox {
+    box-sizing: border-box;
+    color: @text-color;
+    font-size: 14px;
+    display: inline-block;
+    user-select: none;
+    cursor: pointer;
+
+    .@{prefix}-checkbox-icon {
+        position: relative;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        line-height: 0;
+        top: -0.09em;
+        vertical-align: middle;
+
+        input[type='checkbox'] {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            margin: 0;
+            opacity: 0;
+            cursor: inherit;
+        }
+
+        .@{prefix}-checkbox-inner {
+            display: inline-block;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            border-radius: 2px;
+            border: 1px solid @primary-color;
+            transition: all .2s cubic-bezier(.12, .4, .29, 1.46);
+
+            &::after {
+                content: "";
+                position: absolute;
+                border: 2px solid #fff;
+                border-left: 0;
+                border-top: 0;
+                width: 3px;
+                height: 9px;
+                left: 50%;
+                top: 45%;
+                border-radius: 2px;
+                transform: translate(-50%, -50%) rotate(45deg) scale(0);
+                transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
+                transform-origin: center;
+            }
+        }
+    }
+
+    .@{prefix}-checkbox-icon + span {
+        margin-left: 8px;
+    }
+
+    &.checked .@{prefix}-checkbox-inner {
+        background-color: @primary-color;
+        transition: all .1s cubic-bezier(.12, .4, .29, 1.46);
+
+        &::after {
+            transform: translate(-50%, -50%) rotate(45deg) scale(1);
+            transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
+        }
+    }
+
+    &[disabled] {
+        color: @disable-color;
+        cursor: not-allowed;
+
+        .@{prefix}-checkbox-inner {
+            background-color: inherit;
+            border-color: @disable-color;
+    
+            &::after {
+                opacity: 0;
+                border-color: @disable-color;
+            }
+        }
+    }
+
+    &[disabled].checked .@{prefix}-checkbox-inner::after {
+        opacity: 1;
+    }
+}

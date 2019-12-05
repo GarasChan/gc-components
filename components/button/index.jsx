@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 
 import classNames from 'classnames';
 import Icon from '../icon';
@@ -13,20 +13,20 @@ const themeCls = {
 /**
  * 按钮
  */
-const Button = (props) => {
+function Button(props) {
     const { children, type, className, disabled, icon, prefix = 'gc', loading, ...restProps } = props;
     const theme = themeCls[type];
     const isLoading = 'loading' in props && loading !== false;
     const validProps = {
         className: classNames(
-            `${prefix}-button`, 
-            { 
-                [className]: className, 
+            `${prefix}-button`,
+            {
+                [className]: className,
                 [theme]: theme,
                 'icon-only': children === undefined && (isLoading || icon !== undefined),
                 loading: isLoading
             }
-        ), 
+        ),
         disabled
     }
 
@@ -34,12 +34,9 @@ const Button = (props) => {
      * 给string加上span
      * @param {*} children 
      */
-    const renderChildren = children => {
-        if (!_Util.isArray(children)) {
-            children = [children];
-        }
-        return children.map((child, idx) => {
-            return _Util.isString(child) ? <span key={idx}>{child}</span> : child
+    const renderChildren = () => {
+        return React.Children.map(props.children, (child) => {
+            return _Util.isString(child) ? <span>{child}</span> : child
         })
     }
 
@@ -47,34 +44,30 @@ const Button = (props) => {
      * 渲染按钮孩子
      */
     const renderButton = () => {
-        let { icon, children, loading } = props;
+        let { icon, loading } = props;
         if (loading) {
             icon = 'reload';
         }
         if (icon !== undefined) {
-            if (children !== undefined) {
-                return (
-                    <>
-                        <Icon type={icon} />
-                        {renderChildren(children)}
-                    </>
-                )
-            } else {
-                return <Icon type={icon} />
-            }
-        } else if (icon === undefined && children !== undefined) {
-            return renderChildren(children)
+            return (
+                <>
+                    <Icon type={icon} />
+                    {renderChildren()}
+                </>
+            )
+        } else {
+            return renderChildren()
         }
     }
 
     return (
         <button {...validProps} {...restProps}>
-            { renderButton() }
+            {renderButton()}
         </button>
     )
 }
 
-export const ButtonGroup = (props) => {
+export function ButtonGroup(props) {
     const { prefix = 'gc', children } = props;
     return (
         <div className={`${prefix}-button-group`}>

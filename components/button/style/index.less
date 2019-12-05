@@ -19,8 +19,14 @@
     cursor: pointer;
     transition: all .3s cubic-bezier(.645, .045, .355, 1);
 
-    .@{prefix}-icon + span {
-        margin-left: 8px;
+    .@{prefix}-icon {
+        position: relative;
+        top: -0.09em;
+        vertical-align: middle;
+
+        & + span {
+            margin-left: 8px;
+        }
     }
 
     &.icon-only {
@@ -72,7 +78,7 @@
         background-color: @disable-color;
         border-color: @disable-color;
         color: @text-secondary-color;
-        cursor: default;
+        cursor: not-allowed;
     }
 }
 
