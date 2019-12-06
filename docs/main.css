@@ -224,7 +224,7 @@
   width: 100%;
   height: 100%;
   border-radius: 2px;
-  border: 1px solid #0081E2;
+  border: 1px solid #D9D9D9;
   -webkit-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46);
   transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46);
 }
@@ -246,10 +246,14 @@
   -webkit-transform-origin: center;
           transform-origin: center;
 }
+.gc-checkbox:hover .gc-checkbox-inner {
+  border-color: #269FF0;
+}
 .gc-checkbox .gc-checkbox-icon + span {
   margin-left: 8px;
 }
 .gc-checkbox.checked .gc-checkbox-inner {
+  border-color: #0081E2;
   background-color: #0081E2;
   -webkit-transition: all 0.1s cubic-bezier(0.12, 0.4, 0.29, 1.46);
   transition: all 0.1s cubic-bezier(0.12, 0.4, 0.29, 1.46);
