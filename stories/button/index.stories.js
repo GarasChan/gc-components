@@ -44,7 +44,7 @@ storiesOf('Button', module)
         }
     )
     .add(
-        'With Icon',
+        'With Icon component',
         () => {
             return (
                 <div className='demo center'>
