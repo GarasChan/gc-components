@@ -6,7 +6,7 @@ import '../../components/icon/style';
 storiesOf('Icon', module)
     .addDecorator(storyFn => <div style={{ textAlign: 'center' }}>{storyFn()}</div>)
     .add(
-        'icon',
+        'Icon',
         () => {
             return (
                 <div className='demo'>

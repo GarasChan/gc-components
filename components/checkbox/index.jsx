@@ -22,7 +22,7 @@ const Checkbox = (props) => {
     }
 
     const handleChange = (e) => {
-        const { disabled, onChange } = props;
+        const { disabled, onChange, defaultChecked, children, prefix, ...returnProps } = props;
         if (disabled) {
             return;
         }
@@ -30,7 +30,7 @@ const Checkbox = (props) => {
             setChecked(e.target.checked)
         }
         onChange && onChange({
-            ...props,
+            ...returnProps,
             checked: e.target.checked
         });
     }
@@ -84,7 +84,6 @@ export function CheckboxGroup(props) {
             return (
                 <Checkbox 
                     prefix={prefix}
-                    ref={null}
                     key={value.toString()} 
                     checked={checked} 
                     disabled={disabled}

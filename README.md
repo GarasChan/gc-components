@@ -70,11 +70,22 @@ import 'gc-components/es/button/style/css';
 // import 'gc-components/es/button/style'
 ```
 从而实现组件和样式的按需加载，无需手动引入样式。
+
+## 待解决
+1. `Checkbox` 中使用 `useImperativeHandle`、`forwardRef` 后，在 `CheckboxGroup` 中报错  
+```
+Warning: Expected useImperativeHandle() first argument to either be a ref callback or React.createRef() object. Instead received: an object with keys {}.
+```
+```
+Uncaught TypeError: Cannot add property current, object is not extensible
+```
+> 临时处理：`Checkbox` 组件暂时移除了对 `useImperativeHandle`、`forwardRef` 的使用  
+
 ## 开发中...
 - [x] Icon  
 - [x] Button  
 - [x] Checkbox
-- [ ] Radio
+- [x] Radio
 - [ ] Select
 - [ ] Input
 - [ ] Switch

@@ -9,10 +9,10 @@ import '../../components/icon/style';
 storiesOf('Button', module)
     .addDecorator(storyFn => <div style={{ textAlign: 'center' }}>{storyFn()}</div>)
     .add(
-        'theme',
+        'Theme',
         () => {
             return (
-                <div className='demo'>
+                <div className='demo center'>
                     <Button>测试按钮</Button>
                     <Button type='primary'>测试按钮</Button>
                     <Button type='danger' onClick={action('button-click')}>测试按钮</Button>
@@ -22,10 +22,10 @@ storiesOf('Button', module)
         }
     )
     .add(
-        'icon',
+        'With icon',
         () => {
             return (
-                <div className='demo'>
+                <div className='demo center'>
                     <Button icon='search'></Button>
                     <Button type='primary' icon='refresh'></Button>
                 </div>
@@ -33,10 +33,10 @@ storiesOf('Button', module)
         }
     )
     .add(
-        'icon-text',
+        'With icon and text',
         () => {
             return (
-                <div className='demo'>
+                <div className='demo center'>
                     <Button icon='search'>搜索</Button>
                     <Button type='primary' icon='share'>分享</Button>
                 </div>
@@ -44,10 +44,10 @@ storiesOf('Button', module)
         }
     )
     .add(
-        'with Icon',
+        'With Icon',
         () => {
             return (
-                <div className='demo'>
+                <div className='demo center'>
                     <Button>
                         <Icon type='search' />
                     </Button>
@@ -60,7 +60,7 @@ storiesOf('Button', module)
         }
     )
     .add(
-        'loading',
+        'Loading',
         () => {
             const [loading, setLoading] = useState(false);
             const [loading1, setLoading1] = useState(false);
@@ -76,7 +76,7 @@ storiesOf('Button', module)
             }, [loading])
             
             return (
-                <div className='demo'>
+                <div className='demo center'>
                     <Button icon='uploading' loading={loading} onClick={() => { setLoading(true) }}></Button>
                     <Button type='primary' loading></Button>
                     <Button icon='path' loading={true}>刷新</Button>
@@ -92,10 +92,10 @@ storiesOf('Button', module)
         }
     )
     .add(
-        'button-group',
+        'ButtonGroup',
         () => {
             return (
-                <div className='demo'>
+                <div className='demo center'>
                     <div>
                         <ButtonGroup>
                             <Button icon='top-page' />

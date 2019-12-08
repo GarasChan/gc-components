@@ -6,10 +6,10 @@ import '../../components/checkbox/style';
 storiesOf('Checkbox', module)
     .addDecorator(storyFn => <div style={{ textAlign: 'center' }}>{storyFn()}</div>)
     .add(
-        'unControlled',
+        'UnControlled',
         () => {
             return (
-                <div className='demo'>
+                <div className='demo center'>
                     <Checkbox defaultChecked={true} onChange={(checked) => console.log(checked)}>Checked</Checkbox>
                     <Checkbox onChange={(checked) => console.log(checked)}>unChecked</Checkbox>
                     <Checkbox defaultChecked={true} disabled onChange={(checked) => console.log(checked)}>Checked disabled</Checkbox>
@@ -19,18 +19,19 @@ storiesOf('Checkbox', module)
         }
     )
     .add(
-        'controlled',
+        'Controlled',
         () => {
             const [checked, setChecked] = useState(false);
             const [disabled, setDisabled] = useState(false);
 
             const onChange = (params) => {
                 setChecked(params.checked);
+                console.log(params);
             }
 
             return (
-                <div className='demo'>
-                    <Checkbox checked={checked} onChange={onChange} disabled={disabled}>Controlled</Checkbox>
+                <div className='demo center'>
+                    <Checkbox checked={checked} value='animate' onChange={onChange} disabled={disabled}>Controlled</Checkbox>
                     <Button onClick={() => { setChecked(checked => !checked) }}>{checked ? 'UnCheck' : 'Check'}</Button>
                     <Button onClick={() => { setDisabled(disabled => !disabled) }}>{disabled ? 'Disabled' : 'Enable'}</Button>
                 </div>
@@ -66,15 +67,15 @@ storiesOf('Checkbox', module)
 
             return (
                 <>
-                    <div className='demo' style={{display: 'flex', justifyContent: 'center'}}>
+                    <div className='demo center' style={{display: 'flex', justifyContent: 'center'}}>
                         <span>array[]</span>
                         <CheckboxGroup options={options1} checkedValues={checkedValues1} onChange={values => console.log(values)} />
                     </div>
-                    <div className='demo' style={{display: 'flex', justifyContent: 'center'}}>
+                    <div className='demo center' style={{display: 'flex', justifyContent: 'center'}}>
                         <span>array[] disabled</span>
                         <CheckboxGroup options={options1} checkedValues={checkedValues1} disabled onChange={values => console.log(values)} />
                     </div>
-                    <div className='demo' style={{display: 'flex', justifyContent: 'center'}}>
+                    <div className='demo center' style={{display: 'flex', justifyContent: 'center'}}>
                         <span>option[]</span>
                         <CheckboxGroup options={options2} checkedValues={checkedValues2} onChange={values => console.log(values)} />
                     </div>
@@ -83,7 +84,7 @@ storiesOf('Checkbox', module)
         }
     )
     .add(
-        'check All',
+        'Check all',
         () => {
             const options = ['Apple', 'Orange', 'Pear', 'Banana'];
             const defaultValues = ['Orange'];
@@ -102,9 +103,8 @@ storiesOf('Checkbox', module)
             }
 
             return (
-                <div className='demo'>
+                <div className='demo center'>
                     <Checkbox checked={checkAll} onChange={onCheckAllChange}>全选</Checkbox>
-                    <br/>
                     <CheckboxGroup options={options} checkedValues={selectedValues} onChange={onChange} />
                 </div>
             )
