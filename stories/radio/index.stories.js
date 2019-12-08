@@ -4,7 +4,6 @@ import { Radio, RadioGroup, Button } from '../../components/index';
 import '../../components/radio/style';
 
 storiesOf('Radio', module)
-    .addDecorator(storyFn => <div style={{ textAlign: 'center' }}>{storyFn()}</div>)
     .add(
         'Radio',
         () => {
@@ -122,6 +121,16 @@ storiesOf('Radio', module)
                         <Button onClick={showInfo}>showInfo</Button>
                     </div>
                 </>
+            )
+        }
+    )
+    .add(
+        'RadioGroup with button',
+        () => {
+            return (
+                <div className='demo center'>
+                    <RadioGroup type='button' options={['bear', 'dog', 'cat', 'pig']} defaultValue='dog' name='animal'/>
+                </div>
             )
         }
     )

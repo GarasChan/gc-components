@@ -9,7 +9,7 @@ storiesOf('Icon', module)
         'Icon',
         () => {
             return (
-                <div className='demo'>
+                <div className='demo center'>
                     <Icon type='search' />
                     <Icon type='waring' />
                 </div>

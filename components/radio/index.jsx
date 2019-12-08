@@ -6,7 +6,7 @@ import _Util from '../_util/Util';
  * 复选框
  */
 const Radio = (props) => {
-    const { prefix = 'gc', defaultChecked, disabled, checked: propsChecked, name } = props;
+    const { prefixCls = 'gc', className, defaultChecked, disabled, checked: propsChecked, name, type } = props;
     const [ checked, setChecked ] = useState('defaultChecked' in props ? !!defaultChecked : !!propsChecked);
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const Radio = (props) => {
     }
 
     const handleChange = (e) => {
-        const { disabled, onChange, children, defaultChecked, prefix, ...returnProps } = props;
+        const { disabled, onChange, children, defaultChecked, prefixCls, ...returnProps } = props;
         if (disabled) {
             return;
         }
@@ -36,24 +36,23 @@ const Radio = (props) => {
     }
 
     return (
-        <label className={classNames(`${prefix}-radio`, { checked })} disabled={disabled}>
-            <span className={`${prefix}-radio-icon`}>
+        <label className={classNames(`${prefixCls}-radio`, { [className]: className, checked })} disabled={disabled}>
+            <span className={type === 'button' ? `${prefixCls}-radio-button` : `${prefixCls}-radio-icon`}>
                 <input type='radio' checked={checked} disabled={disabled} name={name} onChange={handleChange} />
-                <span className={`${prefix}-radio-inner`}></span>
+                <span className={`${prefixCls}-radio-inner`}></span>
             </span>
             { renderRadio() }
         </label>
     )
 }
 
-const RadioGroup1 = (props, ref) => {
-    const { prefix = 'gc', className, options, defaultValue, value, children, name } = props;
+export const RadioGroup = forwardRef((props, ref) => {
+    const { prefixCls = 'gc', type, className, options, defaultValue, value, children, name } = props;
     if (options !== undefined && !_Util.isArray(options)) {
         console.error('The param "options" expect "array", but not.');
         return null;
     }
 
-    // const radioGroupRef = useRef(null);
     const [checkedValue, setCheckedValue] = useState('defaultValue' in props ? defaultValue : value);
 
     useImperativeHandle(ref, () => {
@@ -89,6 +88,7 @@ const RadioGroup1 = (props, ref) => {
             return React.Children.map(children, (child) => {
                 const { value } = child.props;
                 return React.cloneElement(child, {
+                    type,
                     checked: value === checkedValue,
                     onChange: handleChange,
                     name
@@ -99,8 +99,7 @@ const RadioGroup1 = (props, ref) => {
                 const { label, value, disabled } = option;
                 return (
                     <Radio 
-                        prefix={prefix}
-                        ref={null}
+                        type={type}
                         key={value.toString()} 
                         checked={checkedValue === value} 
                         disabled={disabled}
@@ -123,14 +122,12 @@ const RadioGroup1 = (props, ref) => {
         const { onChange, name } = props;
         onChange && onChange({ name, value });
     }
-    
+
     return (
-        <div className={classNames(`${prefix}-radio-group`, {[className]: className})}>
+        <div className={classNames(`${prefixCls}-radio-group`, {[`${prefixCls}-radio-group-button`]: type === 'button', [className]: className})}>
             {renderChildren()}
         </div>
     )
-}
-
-export const RadioGroup = forwardRef(RadioGroup1);
+})
 
 export default Radio;

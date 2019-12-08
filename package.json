@@ -12,9 +12,6 @@
     "build:sb": "rimraf docs && build-storybook -o docs",
     "dev:sb": "start-storybook -p 6006"
   },
-  "pre-commit": [
-    "build:publish"
-  ],
   "files": [
     "lib",
     "es",

@@ -1,6 +1,6 @@
 @import '../../assets/style/themes/default.less';
 
-.@{prefix}-checkbox {
+.@{prefixCls}-checkbox {
     box-sizing: border-box;
     color: @text-color;
     font-size: 14px;
@@ -8,7 +8,7 @@
     user-select: none;
     cursor: pointer;
 
-    .@{prefix}-checkbox-icon {
+    .@{prefixCls}-checkbox-icon {
         position: relative;
         display: inline-block;
         width: 16px;
@@ -28,7 +28,7 @@
             cursor: inherit;
         }
 
-        .@{prefix}-checkbox-inner {
+        .@{prefixCls}-checkbox-inner {
             display: inline-block;
             box-sizing: border-box;
             width: 100%;
@@ -55,15 +55,15 @@
         }
     }
 
-    &:hover .@{prefix}-checkbox-inner {
+    &:hover .@{prefixCls}-checkbox-inner {
         border-color: @primary-hover-color;
     }
 
-    .@{prefix}-checkbox-icon + span {
+    .@{prefixCls}-checkbox-icon + span {
         margin-left: 8px;
     }
 
-    &.checked .@{prefix}-checkbox-inner {
+    &.checked .@{prefixCls}-checkbox-inner {
         border-color: @primary-color;
         background-color: @primary-color;
         transition: all .1s cubic-bezier(.12, .4, .29, 1.46);
@@ -78,7 +78,7 @@
         color: @disable-color;
         cursor: not-allowed;
 
-        .@{prefix}-checkbox-inner {
+        .@{prefixCls}-checkbox-inner {
             background-color: inherit;
             border-color: @disable-color;
     
@@ -89,7 +89,7 @@
         }
     }
 
-    &[disabled].checked .@{prefix}-checkbox-inner::after {
+    &[disabled].checked .@{prefixCls}-checkbox-inner::after {
         opacity: 1;
     }
 }

@@ -1,6 +1,6 @@
 @import '../../assets/style/themes/default.less';
 
-.@{prefix}-radio {
+.@{prefixCls}-radio {
     box-sizing: border-box;
     color: @text-color;
     font-size: 14px;
@@ -8,7 +8,18 @@
     user-select: none;
     cursor: pointer;
 
-    .@{prefix}-radio-icon {
+    input[type='radio'] {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        margin: 0;
+        opacity: 0;
+        cursor: inherit;
+    }
+
+    .@{prefixCls}-radio-icon {
         position: relative;
         display: inline-block;
         width: 16px;
@@ -17,18 +28,7 @@
         top: -0.09em;
         vertical-align: middle;
 
-        input[type='radio'] {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            margin: 0;
-            opacity: 0;
-            cursor: inherit;
-        }
-
-        .@{prefix}-radio-inner {
+        .@{prefixCls}-radio-inner {
             display: inline-block;
             box-sizing: border-box;
             width: 100%;
@@ -52,15 +52,15 @@
         }
     }
 
-    &:hover .@{prefix}-radio-inner {
+    &:hover .@{prefixCls}-radio-inner {
         border-color: @primary-hover-color;
     }
 
-    .@{prefix}-radio-icon + span {
+    .@{prefixCls}-radio-icon + span {
         margin-left: 8px;
     }
 
-    &.checked .@{prefix}-radio-inner {
+    &.checked .@{prefixCls}-radio-inner {
         border-color: @primary-color;
         transition: all .2s cubic-bezier(.78, .14, .15, .86);
 
@@ -75,7 +75,7 @@
         color: @disable-color;
         cursor: not-allowed;
 
-        .@{prefix}-radio-inner {
+        .@{prefixCls}-radio-inner {
             border-color: @disable-color;
     
             &::after {
@@ -86,7 +86,57 @@
         }
     }
 
-    &[disabled].checked .@{prefix}-radio-inner::after {
+    &[disabled].checked .@{prefixCls}-radio-inner::after {
         opacity: 1;
+    }
+}
+
+.@{prefixCls}-radio-group {
+    .@{prefixCls}-radio {
+        margin-left: 16px;
+    }
+}
+
+.@{prefixCls}-radio-group-button {
+    .@{prefixCls}-radio {
+        position: relative;
+        height: 32px;
+        line-height: 32px;
+        margin: 0;
+        padding: 0 16px;
+        border: 1px solid @border-color;
+        transition: all .3s;
+
+        .@{prefixCls}-radio-button {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            line-height: 0;
+        }
+
+        &:not(:first-child) {
+            margin-left: -1px;
+        }
+
+        &:first-child {
+            border-radius: 4px 0 0 4px;
+        }
+        &:last-child {
+            border-radius: 0 4px 4px 0;
+        }
+
+        &:hover {
+            color: @primary-hover-color;
+            border-color: @primary-hover-color;
+            transition: all .3s;
+            z-index: 1;
+        }
+
+        &.checked {
+            color: @primary-color;
+            border-color: @primary-color;
+            z-index: 1;
+            transition: all .3s;
+        }
     }
 }

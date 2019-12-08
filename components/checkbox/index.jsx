@@ -6,7 +6,7 @@ import _Util from '../_util/Util';
  * 复选框
  */
 const Checkbox = (props) => {
-    const { prefix = 'gc', defaultChecked, disabled, checked: propsChecked } = props;
+    const { prefixCls = 'gc', defaultChecked, disabled, checked: propsChecked } = props;
     const [ checked, setChecked ] = useState('defaultChecked' in props ? !!defaultChecked : !!propsChecked);
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const Checkbox = (props) => {
     }
 
     const handleChange = (e) => {
-        const { disabled, onChange, defaultChecked, children, prefix, ...returnProps } = props;
+        const { disabled, onChange, defaultChecked, children, prefixCls, ...returnProps } = props;
         if (disabled) {
             return;
         }
@@ -36,10 +36,10 @@ const Checkbox = (props) => {
     }
 
     return (
-        <label className={classNames(`${prefix}-checkbox`, { checked })} disabled={disabled}>
-            <span className={`${prefix}-checkbox-icon`}>
+        <label className={classNames(`${prefixCls}-checkbox`, { checked })} disabled={disabled}>
+            <span className={`${prefixCls}-checkbox-icon`}>
                 <input type='checkbox' checked={checked} disabled={disabled} onChange={handleChange} />
-                <span className={`${prefix}-checkbox-inner`}></span>
+                <span className={`${prefixCls}-checkbox-inner`}></span>
             </span>
             { renderCheckbox() }
         </label>
@@ -47,7 +47,7 @@ const Checkbox = (props) => {
 }
 
 export function CheckboxGroup(props) {
-    const { prefix = 'gc', className, options, checkedValues = [] } = props;
+    const { prefixCls = 'gc', className, options, checkedValues = [] } = props;
     if (!_Util.isArray(options)) {
         console.error('The param "options" expect "array", but not.');
         return null;
@@ -83,7 +83,7 @@ export function CheckboxGroup(props) {
             const { label, value, disabled, checked } = option;
             return (
                 <Checkbox 
-                    prefix={prefix}
+                    prefixCls={prefixCls}
                     key={value.toString()} 
                     checked={checked} 
                     disabled={disabled}
@@ -110,7 +110,7 @@ export function CheckboxGroup(props) {
     }
     
     return (
-        <div className={classNames(`${prefix}-checkbox-group`, {[className]: className})}>
+        <div className={classNames(`${prefixCls}-checkbox-group`, {[className]: className})}>
             {renderChildren()}
         </div>
     )

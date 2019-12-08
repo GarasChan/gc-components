@@ -14,12 +14,12 @@ const themeCls = {
  * 按钮
  */
 function Button(props) {
-    const { children, type, className, disabled, icon, prefix = 'gc', loading, ...restProps } = props;
+    const { children, type, className, disabled, icon, prefixCls = 'gc', loading, ...restProps } = props;
     const theme = themeCls[type];
     const isLoading = 'loading' in props && loading !== false;
     const validProps = {
         className: classNames(
-            `${prefix}-button`,
+            `${prefixCls}-button`,
             {
                 [className]: className,
                 [theme]: theme,
@@ -68,9 +68,9 @@ function Button(props) {
 }
 
 export function ButtonGroup(props) {
-    const { prefix = 'gc', children } = props;
+    const { prefixCls = 'gc', children } = props;
     return (
-        <div className={`${prefix}-button-group`}>
+        <div className={`${prefixCls}-button-group`}>
             {children}
         </div>
     )

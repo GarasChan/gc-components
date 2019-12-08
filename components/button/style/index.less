@@ -1,7 +1,7 @@
 @import '../../assets/style/themes/default.less';
 @import '../../assets/style/animate.less';
 
-.@{prefix}-button {
+.@{prefixCls}-button {
     display: inline-block;
     box-sizing: border-box;
     height: 32px;
@@ -19,7 +19,7 @@
     cursor: pointer;
     transition: all .3s cubic-bezier(.645, .045, .355, 1);
 
-    .@{prefix}-icon {
+    .@{prefixCls}-icon {
         position: relative;
         top: -0.09em;
         vertical-align: middle;
@@ -34,7 +34,7 @@
         padding: 0;
     }
 
-    &.loading .@{prefix}-icon svg {
+    &.loading .@{prefixCls}-icon svg {
         animation: spin 1.5s linear infinite;
     }
 
@@ -82,11 +82,11 @@
     }
 }
 
-.@{prefix}-button-group {
+.@{prefixCls}-button-group {
     display: inline-block;
     background-color: transparent;
 
-    .@{prefix}-button {
+    .@{prefixCls}-button {
         position: relative;
         border-radius: 0;
         margin-right: 0;
@@ -107,8 +107,8 @@
         }
     }
 
-    .@{prefix}-button.primary,
-    .@{prefix}-button.danger {
+    .@{prefixCls}-button.primary,
+    .@{prefixCls}-button.danger {
         &:not(:first-child)::before {
             content: '';
             position: absolute;
