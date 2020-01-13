@@ -6,7 +6,7 @@ import _Util from '../_util/Util';
  * 复选框
  */
 const Radio = (props) => {
-    const { prefixCls = 'gc', className, defaultChecked, disabled, checked: propsChecked, name, type } = props;
+    const { prefixCls = 'gc-radio', className, defaultChecked, disabled, checked: propsChecked, name, type } = props;
     const [ checked, setChecked ] = useState('defaultChecked' in props ? !!defaultChecked : !!propsChecked);
 
     useEffect(() => {
@@ -36,10 +36,10 @@ const Radio = (props) => {
     }
 
     return (
-        <label className={classNames(`${prefixCls}-radio`, { [className]: className, checked })} disabled={disabled}>
-            <span className={type === 'button' ? `${prefixCls}-radio-button` : `${prefixCls}-radio-icon`}>
+        <label className={classNames(prefixCls, { [className]: className, checked })} disabled={disabled}>
+            <span className={type === 'button' ? `${prefixCls}-button` : `${prefixCls}-icon`}>
                 <input type='radio' checked={checked} disabled={disabled} name={name} onChange={handleChange} />
-                <span className={`${prefixCls}-radio-inner`}></span>
+                <span className={`${prefixCls}-inner`}></span>
             </span>
             { renderRadio() }
         </label>
@@ -47,7 +47,7 @@ const Radio = (props) => {
 }
 
 export const RadioGroup = forwardRef((props, ref) => {
-    const { prefixCls = 'gc', type, className, options, defaultValue, value, children, name } = props;
+    const { prefixCls = 'gc-radio', type, className, options, defaultValue, value, children, name } = props;
     if (options !== undefined && !_Util.isArray(options)) {
         console.error('The param "options" expect "array", but not.');
         return null;
@@ -99,6 +99,7 @@ export const RadioGroup = forwardRef((props, ref) => {
                 const { label, value, disabled } = option;
                 return (
                     <Radio 
+                        prefixCls={prefixCls}
                         type={type}
                         key={value.toString()} 
                         checked={checkedValue === value} 
@@ -124,7 +125,7 @@ export const RadioGroup = forwardRef((props, ref) => {
     }
 
     return (
-        <div className={classNames(`${prefixCls}-radio-group`, {[`${prefixCls}-radio-group-button`]: type === 'button', [className]: className})}>
+        <div className={classNames(`${prefixCls}-group`, {[`${prefixCls}-group-button`]: type === 'button', [className]: className})}>
             {renderChildren()}
         </div>
     )

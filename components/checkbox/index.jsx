@@ -6,7 +6,7 @@ import _Util from '../_util/Util';
  * 复选框
  */
 const Checkbox = (props) => {
-    const { prefixCls = 'gc', defaultChecked, disabled, checked: propsChecked } = props;
+    const { prefixCls = 'gc-checkbox', defaultChecked, disabled, checked: propsChecked } = props;
     const [ checked, setChecked ] = useState('defaultChecked' in props ? !!defaultChecked : !!propsChecked);
 
     useEffect(() => {
@@ -36,10 +36,10 @@ const Checkbox = (props) => {
     }
 
     return (
-        <label className={classNames(`${prefixCls}-checkbox`, { checked })} disabled={disabled}>
-            <span className={`${prefixCls}-checkbox-icon`}>
+        <label className={classNames(prefixCls, { checked })} disabled={disabled}>
+            <span className={`${prefixCls}-icon`}>
                 <input type='checkbox' checked={checked} disabled={disabled} onChange={handleChange} />
-                <span className={`${prefixCls}-checkbox-inner`}></span>
+                <span className={`${prefixCls}-inner`}></span>
             </span>
             { renderCheckbox() }
         </label>
@@ -47,7 +47,7 @@ const Checkbox = (props) => {
 }
 
 export function CheckboxGroup(props) {
-    const { prefixCls = 'gc', className, options, checkedValues = [] } = props;
+    const { prefixCls = 'gc-checkbox', className, options, checkedValues = [] } = props;
     if (!_Util.isArray(options)) {
         console.error('The param "options" expect "array", but not.');
         return null;
@@ -110,7 +110,7 @@ export function CheckboxGroup(props) {
     }
     
     return (
-        <div className={classNames(`${prefixCls}-checkbox-group`, {[className]: className})}>
+        <div className={classNames(`${prefixCls}-group`, {[className]: className})}>
             {renderChildren()}
         </div>
     )

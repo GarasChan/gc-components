@@ -1,6 +1,6 @@
 {
   "name": "gc-components",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React + ReactHooks Components",
   "private": false,
   "scripts": {
@@ -37,7 +37,10 @@
   "dependencies": {
     "@babel/runtime": "^7.6.3",
     "core-js": "^3.3.4",
+    "lodash.clonedeep": "^4.5.0",
+    "rc-tooltip": "^4.0.0-alpha.3",
     "react": "^16.11.0",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.11.0"
   },
   "devDependencies": {

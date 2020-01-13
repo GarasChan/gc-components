@@ -86,7 +86,8 @@ Uncaught TypeError: Cannot add property current, object is not extensible
 - [x] Button  
 - [x] Checkbox
 - [x] Radio
-- [ ] Select
+- [x] Select
+- [x] Popup
 - [ ] Input
 - [ ] Switch
 - [ ] Upload

@@ -1,8 +1,63 @@
-@keyframes spin {
+.effect() {
+    animation-duration: .3s;
+    animation-fill-mode: both;
+}
+
+.gc-zoom-enter,
+.gc-zoom-appear {
+    opacity: 0;
+    .effect();
+    animation-timing-function: cubic-bezier(.08, .82, .17, 1);
+    animation-play-state: paused;
+}
+
+.gc-zoom-leave {
+    .effect();
+    animation-timing-function: cubic-bezier(.78, .14, .15, .86);
+    animation-play-state: paused;
+}
+
+.gc-zoom-enter.gc-zoom-enter-active,
+.gc-zoom-appear.gc-zoom-appear-active {
+    animation-name: gcZoomIn;
+    animation-play-state: running;
+}
+
+.gc-zoom-leave.gc-zoom-leave-active {
+    animation-name: gcZoomOut;
+    animation-play-state: running;
+}
+
+@keyframes gcSpin {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes gcZoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes gcZoomOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(.8);
     }
 }

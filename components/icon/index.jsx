@@ -3,9 +3,9 @@ import classNames from 'classnames';
 import '../assets/font/iconfont';
 
 const Icon = (props) => {
-    const { type, className, prefixCls = 'gc', ...restProps } = props;
+    const { type, className, prefixCls = 'gc-icon', ...restProps } = props;
     const cls = classNames(
-        `${prefixCls}-icon`, 
+        prefixCls, 
         { 
             [className]: className
         }

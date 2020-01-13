@@ -1,7 +1,10 @@
 @import '../../assets/style/themes/default.less';
 @import '../../assets/style/animate.less';
 
-.@{prefixCls}-button {
+@button-prefixCls: gc-button;
+@buttonGroup-prefixCls: gc-button-group;
+
+.@{button-prefixCls} {
     display: inline-block;
     box-sizing: border-box;
     height: 32px;
@@ -19,7 +22,7 @@
     cursor: pointer;
     transition: all .3s cubic-bezier(.645, .045, .355, 1);
 
-    .@{prefixCls}-icon {
+    .@{button-prefixCls}-icon {
         position: relative;
         top: -0.09em;
         vertical-align: middle;
@@ -34,8 +37,8 @@
         padding: 0;
     }
 
-    &.loading .@{prefixCls}-icon svg {
-        animation: spin 1.5s linear infinite;
+    &.loading .@{button-prefixCls}-icon svg {
+        animation: gcSpin 1.5s linear infinite;
     }
 
     &:hover {
@@ -82,11 +85,11 @@
     }
 }
 
-.@{prefixCls}-button-group {
+.@{button-prefixCls}-group {
     display: inline-block;
     background-color: transparent;
 
-    .@{prefixCls}-button {
+    .@{button-prefixCls} {
         position: relative;
         border-radius: 0;
         margin-right: 0;
@@ -107,8 +110,8 @@
         }
     }
 
-    .@{prefixCls}-button.primary,
-    .@{prefixCls}-button.danger {
+    .@{button-prefixCls}.primary,
+    .@{button-prefixCls}.danger {
         &:not(:first-child)::before {
             content: '';
             position: absolute;
