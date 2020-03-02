@@ -1,6 +1,7 @@
-export { default as Icon } from './icon/index';
-export { default as Button, ButtonGroup } from './button/index';
-export { default as Checkbox, CheckboxGroup } from './checkbox/index';
-export { default as Radio, RadioGroup } from './radio/index';
-export { default as Select, Option } from './select/index';
-export { default as Popup } from './popup/index';
+export { default as Icon } from './icon';
+export { default as Button, ButtonGroup } from './button';
+export { default as Checkbox, CheckboxGroup } from './checkbox';
+export { default as Radio, RadioGroup } from './radio';
+export { default as Select, Option } from './select';
+export { default as Popup } from './popup';
+export { default as Separator } from './separator';

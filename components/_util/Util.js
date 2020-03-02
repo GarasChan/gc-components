@@ -1,5 +1,3 @@
-import cloneDeep from "lodash.clonedeep";
-
 const _Util = {
     isString: (value) => {
         return Object.prototype.toString.call(value) === '[object String]';
@@ -18,7 +16,7 @@ const _Util = {
     },
 
     filterProps: (props = {}, filter = []) => {
-        let newProps = cloneDeep(props);
+        let newProps = {...props};
         filter.forEach(item => {
             delete newProps[item];
         });

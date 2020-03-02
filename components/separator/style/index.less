@@ -1,0 +1,89 @@
+@import '../../assets/style/themes/default.less';
+
+@separator-prefixCls: gc-separator;
+@separator-height: 1px;
+@separator-color: @text-color;
+@separator-bg: red;
+@separator-font-size: 14px;
+
+.@{separator-prefixCls} {
+    display: flex;
+    align-items: center;
+    margin: 1em 0;
+    width: 100%;
+    height: 1px;
+    box-sizing: border-box;
+    background-color: @separator-bg;
+}
+
+.@{separator-prefixCls}-with-inner {
+    font-size: @separator-font-size;
+    height: auto;
+    background-color: inherit;
+
+    .@{separator-prefixCls}-inner {
+        color: @separator-color;
+        margin: 0 1em;
+    }
+
+    &::after,
+    &::before {
+        content: '';
+        display: block;
+        height: 1px;
+        background-color: @separator-bg;
+        flex-grow: 1;
+    }
+}
+
+.@{separator-prefixCls}-dash {
+    background-color: inherit;
+    border-top: 1px dashed @separator-bg;
+}
+
+.@{separator-prefixCls}-with-inner.@{separator-prefixCls}-dash {
+    border-top: none;
+
+    &::after,
+    &::before {
+        background-color: inherit;
+        border-top: 1px dashed @separator-bg;
+    }
+}
+
+// vertical
+.@{separator-prefixCls}-vertical {
+    flex-direction: column;
+    margin: 0 1em;
+    height: 100%;
+    width: 1px;
+}
+
+.@{separator-prefixCls}-vertical.@{separator-prefixCls}-with-inner {
+    width: auto;
+
+    .@{separator-prefixCls}-inner {
+        margin: 1em 0;
+        writing-mode: tb-rl;
+    }
+
+    &::after,
+    &::before {
+        width: 1px;
+    }
+}
+
+.@{separator-prefixCls}-vertical.@{separator-prefixCls}-dash {
+    border-left: 1px dashed @separator-bg;
+    background-color: inherit;
+}
+
+.@{separator-prefixCls}-vertical.@{separator-prefixCls}-with-inner.@{separator-prefixCls}-dash {
+    border-left: none;
+
+    &::after,
+    &::before {
+        border-left: 1px dashed @separator-bg;
+        background-color: inherit;
+    }
+}
