@@ -24,7 +24,7 @@ storiesOf('Checkbox', module)
             const [checked, setChecked] = useState(false);
             const [disabled, setDisabled] = useState(false);
 
-            const onChange = (params) => {
+            const onChange = (params: any) => {
                 setChecked(params.checked);
                 console.log(params);
             }
@@ -92,12 +92,12 @@ storiesOf('Checkbox', module)
             const [checkAll, setCheckAll] = useState(options.length === defaultValues.length);
             const [selectedValues, setSelectedValues] = useState(defaultValues);
 
-            const onChange = (values) => {
+            const onChange = (values: any) => {
                 setCheckAll(values.length === options.length);
                 setSelectedValues(values);
             }
 
-            const onCheckAllChange = (params) => {
+            const onCheckAllChange = (params: any) => {
                 setCheckAll(params.checked);
                 setSelectedValues(params.checked ? options : []);
             }

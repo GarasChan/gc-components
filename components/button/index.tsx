@@ -3,8 +3,22 @@ import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
 import _Util from '../_util/Util';
-import { useImperativeHandle } from 'react';
-import { useRef } from 'react';
+
+export interface ButtonProps {
+    children?: React.ReactNode;
+    type?: 'primary' | 'danger' | undefined;
+    className?: string;
+    disabled?: boolean;
+    icon?: string;
+    prefixCls?: string;
+    loading?: boolean;
+    [optional: string]: any;
+}
+
+export interface ButtonGroupProps {
+    prefixCls?: string, 
+    children: React.ReactNode
+}
 
 // type => class
 const themeCls = {
@@ -15,9 +29,9 @@ const themeCls = {
 /**
  * 按钮
  */
-function Button(props, ref) {
-    const { children, type, className, disabled, icon, prefixCls = 'gc-button', loading, ...restProps } = props;
-    const theme = themeCls[type];
+const Button = (props: ButtonProps, ref: React.Ref<HTMLButtonElement>) => {
+    const { children, type = '', className = '', disabled, icon, prefixCls = 'gc-button', loading, ...restProps } = props;
+    const theme = type && themeCls[type];
     const isLoading = 'loading' in props && loading !== false;
     const validProps = {
         className: classNames(
@@ -31,14 +45,6 @@ function Button(props, ref) {
         ),
         disabled
     }
-
-    const buttonRef = useRef();
-
-    useImperativeHandle(ref, () => {
-        return {
-            current: buttonRef.current
-        }
-    })
 
     /**
      * 给string加上span
@@ -71,18 +77,18 @@ function Button(props, ref) {
     }
 
     return (
-        <button ref={buttonRef} {...validProps} {...restProps}>
+        <button ref={ref} {...validProps} {...restProps}>
             {renderButton()}
         </button>
     )
 }
 
-export function ButtonGroup(props) {
+export function ButtonGroup(props: ButtonGroupProps) {
     const { prefixCls = 'gc-button', children } = props;
     return (
         <div className={`${prefixCls}-group`}>
             {
-                React.Children.map(children, (child) => {
+                React.Children.map(children, (child: any) => {
                     return React.cloneElement(child, {
                         className: prefixCls
                     })

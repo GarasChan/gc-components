@@ -10,7 +10,7 @@ storiesOf('Radio', module)
             const [checked, setChecked] = useState(false);
             const [disabled, setDisabled] = useState(false);
 
-            const onChange = (params) => {
+            const onChange = (params: any) => {
                 setChecked(params.checked);
             }
 
@@ -91,7 +91,7 @@ storiesOf('Radio', module)
 
             const [fruit, setFruit] = useState('pear');
 
-            const onFruitChange = (params) => {
+            const onFruitChange = (params: any) => {
                 setFruit(params.value);
                 console.log(params);
             }

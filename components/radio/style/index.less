@@ -73,7 +73,7 @@
         }
     }
 
-    &[disabled] {
+    &.disabled {
         color: @disable-color;
         cursor: not-allowed;
 
@@ -88,7 +88,7 @@
         }
     }
 
-    &[disabled].checked .@{radio-prefixCls}-inner::after {
+    &.disabled.checked .@{radio-prefixCls}-inner::after {
         opacity: 1;
     }
 }

@@ -1,23 +1,23 @@
 const _Util = {
-    isString: (value) => {
+    isString: (value: any) => {
         return Object.prototype.toString.call(value) === '[object String]';
     },
 
-    isArray: (value) => {
+    isArray: (value: any) => {
         return Object.prototype.toString.call(value) === '[object Array]';
     },
 
-    isObject: (value) => {
+    isObject: (value: any) => {
         return Object.prototype.toString.call(value) === '[object Object]';
     },
 
-    isFunction: (value) => {
+    isFunction: (value: any) => {
         return Object.prototype.toString.call(value) === '[object Function]';
     },
 
-    filterProps: (props = {}, filter = []) => {
+    filterProps: (props: any = {}, filter: string[] = []) => {
         let newProps = {...props};
-        filter.forEach(item => {
+        filter.forEach((item: string) => {
             delete newProps[item];
         });
         return newProps;

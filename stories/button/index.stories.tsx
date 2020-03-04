@@ -7,7 +7,7 @@ import '../../components/button/style';
 import '../../components/icon/style';
 
 storiesOf('Button', module)
-    .addDecorator(storyFn => <div style={{ textAlign: 'center' }}>{storyFn()}</div>)
+    .addDecorator(storyFn => (<div style={{ textAlign: 'center' }}>{storyFn()}</div>))
     .add(
         'Theme',
         () => {
@@ -62,9 +62,10 @@ storiesOf('Button', module)
     .add(
         'Loading',
         () => {
+            type timerType = any;
             const [loading, setLoading] = useState(false);
             const [loading1, setLoading1] = useState(false);
-            const timer = useRef(null);
+            const timer = useRef<timerType>();
 
             useEffect(() => {
                 timer.current = setTimeout(() => {

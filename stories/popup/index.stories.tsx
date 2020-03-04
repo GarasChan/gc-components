@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
 import { Popup, Button } from '../../components/index';
 import '../../components/popup/style';
 
@@ -34,7 +33,7 @@ storiesOf('Popup', module)
             return (
                 <div className='demo center' style={{ marginTop: '150px' }}>
                     <Popup
-                        action={action}
+                        trigger={action}
                         withArrow={true}
                         placement={select('placement', placementOptions, 'top')}
                         overlay={

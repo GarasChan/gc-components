@@ -1,7 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
 
-function Separator(props) {
+export interface SeparatorProps {
+    children?: React.ReactNode;
+    prefixCls?: string;
+    type?: 'dash';
+    className?: string;
+    orientation?: 'vertical';
+    innerStyle?: React.CSSProperties;
+}
+
+function Separator(props: SeparatorProps) {
     const { children, prefixCls = 'gc-separator', type, className, orientation, innerStyle = {}, ...restprops } = props;
 
     const cls = classNames(

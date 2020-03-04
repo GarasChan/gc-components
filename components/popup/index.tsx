@@ -1,49 +1,54 @@
 import React, { useState, useEffect } from "react";
 import classNames from 'classnames';
 import Tooltip from "rc-tooltip";
+import { TooltipProps } from 'rc-tooltip/es/Tooltip';
 
-function Popup(props) {
+export interface PopupProps extends TooltipProps {
+    defaultVisible?: boolean, 
+    visible?: boolean, 
+    withArrow?: boolean, 
+}
+
+function Popup(props: PopupProps) {
     const { 
         prefixCls = 'gc-popup', 
-        trigger = ['click'],
+        trigger = 'click',
         defaultVisible, 
         visible: overlayVisible, 
         placement = 'top', 
         withArrow = false,
         overlay, 
         children, 
-        align= {},
-        ...tooltipProps
+        ...restProps
     } = props;
 
     const [visible, setVisible] = useState('visible' in props ? !!overlayVisible : !!defaultVisible);
 
     useEffect(() => {
         if ('visible' in props && visible !== overlayVisible) {
-            setVisible(overlayVisible);
+            setVisible(!!overlayVisible);
         }
     }, [overlayVisible])
 
-    const handleVisibleChange = (visible) => {
+    const handleVisibleChange = (visible: boolean) => {
         const { onVisibleChange } = props;
         if (!('visible' in props)) {
             setVisible(visible);
         }
-        onVisibleChange && onVisibleChange(visible, e);
+        onVisibleChange && onVisibleChange(visible);
     };
 
     return (
         <Tooltip
-            {...tooltipProps}
+            {...restProps}
             prefixCls={prefixCls}
             trigger={trigger}
-            overlay={overlay}
             overlayClassName={classNames({ [`${prefixCls}-with-arrow`]: withArrow })}
             placement={placement}
             transitionName='gc-zoom'
             onVisibleChange={handleVisibleChange}
             visible={visible} 
-            align={align}
+            overlay={overlay}
         >
             {children}
         </Tooltip>

@@ -20,12 +20,13 @@ switch (process.env.BABEL_ENV) {
 
 const presets = [
     [
-        "@babel/preset-env", { 
+        "@babel/env", { 
             loose, 
             modules 
         }
     ], 
-    "@babel/preset-react"
+    "@babel/react",
+    "@babel/typescript"
 ];
 const plugins = [
     [
@@ -34,6 +35,7 @@ const plugins = [
         }
     ],
     '@babel/plugin-proposal-class-properties',
+    "@babel/plugin-proposal-optional-chaining",
     "react-docgen"
 ];
 

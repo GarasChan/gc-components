@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "outDir": "types",
+        "allowJs": true,
+        "checkJs": true,
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        "jsx": "react",
+        "noImplicitReturns": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "sourceMap": true,
+        "strict": true
+    },
+    "include": [
+        "components",
+        "stories"
+    ],
+    "exclude": [
+        "components/**/*.js"
+    ]
+}

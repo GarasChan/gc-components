@@ -76,7 +76,7 @@
         }
     }
 
-    &[disabled] {
+    &.disabled {
         color: @disable-color;
         cursor: not-allowed;
 
@@ -91,7 +91,7 @@
         }
     }
 
-    &[disabled].checked .@{checkbox-prefixCls}-inner::after {
+    &.disabled.checked .@{checkbox-prefixCls}-inner::after {
         opacity: 1;
     }
 }

@@ -13,7 +13,7 @@ const distDir = resolve("dist");
 const libDir = resolve("lib");
 const esDir = resolve("es");
 const lessDir = resolve("components/**/*.less");
-const indexJsDir = resolve("components/**/style/index.js");
+const indexJsDir = resolve("components/**/style/index.ts");
 
 // 复制 less 文件到 lib es 文件夹下
 gulp.task("copy-less", () => {

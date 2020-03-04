@@ -1,9 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
-import '../assets/font/iconfont';
+// import '../assets/font/iconfont';
 
-const Icon = (props) => {
-    const { type, className, prefixCls = 'gc-icon', ...restProps } = props;
+export interface IconProps {
+    type: string;
+    className?: string;
+    prefixCls?: string;
+    [optional: string]: any;
+}
+
+const Icon = (props: IconProps) => {
+    const { type, className = '', prefixCls = 'gc-icon', ...restProps } = props;
     const cls = classNames(
         prefixCls, 
         { 

@@ -2,22 +2,49 @@ import React, { useState, useEffect } from 'react';
 import Scrollbars from 'react-custom-scrollbars';
 import classNames from 'classnames';
 import Tooltip from "rc-tooltip";
+import { TooltipProps } from 'rc-tooltip/es/Tooltip';
 import Icon from '../icon';
 import _Util from '../_util/Util';
-import cloneDeep from 'lodash.clonedeep';
+
+export interface SelectProps {
+    prefixCls?: string;
+    align?: TooltipProps['align'];
+    children?: React.ReactNode;
+    options?: SelectOption[];
+    defaultValue?: string;
+    value?: string;
+    renderSelectedComponent?: () => React.ReactElement;
+    onChange?: (option: SelectItem) => void;
+    hideOnClick?: string;
+    dropdownStyle?: React.CSSProperties;
+}
+
+export interface OptionProps {
+    children?: React.ReactNode;
+    [optional: string]: any;
+}
+
+export type SelectOption = {
+    label?: string,
+    value?: string
+} & string;
+
+export interface SelectItem {
+    value?: string;
+}
 
 /**
  * 按钮
  */
-function Select(props) {
-    const { 
-        prefixCls = 'gc-select', 
-        align = {}, 
-        children, 
-        options, 
-        defaultValue, 
-        value, 
-        renderSelectedComponent, 
+function Select(props: SelectProps) {
+    const {
+        prefixCls = 'gc-select',
+        align = {},
+        children,
+        options,
+        defaultValue,
+        value,
+        renderSelectedComponent,
         onChange,
         hideOnClick = true,
         dropdownStyle = {}
@@ -30,7 +57,7 @@ function Select(props) {
     const [width, setWidth] = useState(dropdownStyle.width);
     const [selectedValue, setSelectedValue] = useState(defaultValue || value);
     const [isDropdownShow, setDropdownStatus] = useState(false);
-    const selectValueRef = React.createRef();
+    const selectValueRef: React.Ref<HTMLDivElement> = React.createRef();
 
     useEffect(() => {
         if ('value' in props && props.value !== selectedValue) {
@@ -41,7 +68,7 @@ function Select(props) {
         }
     }, [value])
 
-    const handleClick = (option) => {
+    const handleClick = (option: SelectItem) => {
         if (!('value' in props)) {
             setSelectedValue(option.value);
         }
@@ -49,7 +76,7 @@ function Select(props) {
         onChange && onChange(option);
     }
 
-    const toggleDropdownStatus = (isShow) => {
+    const toggleDropdownStatus = (isShow?: boolean) => {
         if (isShow !== undefined) {
             setDropdownStatus(isShow);
         } else {
@@ -59,14 +86,20 @@ function Select(props) {
         }
     }
 
-    const handleVisibleChange = (visible) => {
+    const handleVisibleChange = (visible: boolean) => {
         setDropdownStatus(visible);
     }
 
     const renderValue = () => {
         const innnerCls = `${prefixCls}-value-inner`;
-        let valueComponent = _Util.isObject(options) ? options.find(option => option.value === selectedValue).label : selectedValue;
-        if ('renderSelectedComponent' in props && _Util.isFunction(renderSelectedComponent)) {
+        let valueComponent: React.ReactElement | string | undefined = selectedValue;
+        if (options && _Util.isArray(options)) {
+            const option = options.find(option => option.value === selectedValue);
+            option && (valueComponent = option.label);
+            // valueComponent = option?.label;
+        }
+        // valueComponent = _Util.isArray(options) ? options?.find(option => option.value === selectedValue)?.label : selectedValue;
+        if ('renderSelectedComponent' in props && renderSelectedComponent && _Util.isFunction(renderSelectedComponent)) {
             valueComponent = renderSelectedComponent();
         }
         if (React.isValidElement(valueComponent)) {
@@ -82,6 +115,9 @@ function Select(props) {
     }
 
     const getOptions = () => {
+        if (!options) {
+            return [];
+        }
         return options.map(option => {
             if (!_Util.isObject(option)) {
                 return {
@@ -95,37 +131,38 @@ function Select(props) {
 
     const renderDropdown = () => {
         if (children !== undefined) {
-            return React.Children.map(children, (child) => {
-                const { className } = child.props;
+            return React.Children.map(children, (child: any) => {
+                const { className, value } = child.props;
                 if (!React.isValidElement(child)) {
                     return null;
                 }
-                const childProps = _Util.filterProps(child.props, ['children']);
-                return React.cloneElement(child, {
-                    onClick: () => {handleClick(childProps)},
+                const option = _Util.filterProps(child.props, ['children', 'className']);
+                const childProps = {
+                    onClick: () => { handleClick(option) },
                     className: classNames(
-                        `${prefixCls}-dropdown-item`, 
+                        `${prefixCls}-dropdown-item`,
                         {
                             [className]: className,
-                            [`${prefixCls}-dropdown-active`]: selectedValue === child.props.value
+                            [`${prefixCls}-dropdown-active`]: selectedValue === value
                         }
                     )
-                })
+                }
+                return React.cloneElement(child, childProps);
             })
         }
         return getOptions().map((option) => {
             const { label, value } = option;
             return (
-                <Option 
+                <Option
                     className={
-                        classNames(`${prefixCls}-dropdown-item`, 
-                        {
-                            [className]: className, 
-                            [`${prefixCls}-dropdown-active`]: selectedValue === value
-                        }
-                    )} 
-                    value={value} 
-                    onClick={() => {handleClick(option)}}
+                        classNames(`${prefixCls}-dropdown-item`,
+                            {
+                                // [className]: className,
+                                [`${prefixCls}-dropdown-active`]: selectedValue === value
+                            }
+                        )}
+                    value={value}
+                    onClick={() => { handleClick(option) }}
                 >
                     {label}
                 </Option>
@@ -134,7 +171,7 @@ function Select(props) {
     }
 
     const getDropdownStyle = () => {
-        const style = cloneDeep(dropdownStyle);
+        const style = { ...dropdownStyle };
         if (width) {
             style.width = `${width}px`;
         }
@@ -143,7 +180,7 @@ function Select(props) {
 
     return (
         <Tooltip
-            trigger={['click']}
+            trigger='click'
             placement='bottomLeft'
             prefixCls={`${prefixCls}-dropdown`}
             transitionName='gc-zoom'
@@ -159,12 +196,12 @@ function Select(props) {
             onVisibleChange={handleVisibleChange}
             align={align}
         >
-            <div ref={selectValueRef} className={classNames(prefixCls, { [`${prefixCls}-hidden`]: !isDropdownShow})}>
-                <div className={`${prefixCls}-value`} onClick={toggleDropdownStatus}>
+            <div ref={selectValueRef} className={classNames(prefixCls, { [`${prefixCls}-hidden`]: !isDropdownShow })}>
+                <div className={`${prefixCls}-value`} onClick={() => {toggleDropdownStatus()}}>
                     {renderValue()}
-                    <Icon 
-                        type='arrow-up' 
-                        className={`${prefixCls}-value-arrow`} 
+                    <Icon
+                        type='arrow-up'
+                        className={`${prefixCls}-value-arrow`}
                     />
                 </div>
             </div>
@@ -172,19 +209,19 @@ function Select(props) {
     )
 }
 
-export function Option(props) {
-    const { children, ...restProps } = props;
+export function Option(props: OptionProps) {
+    const { children, onClick, ...restProps } = props;
 
     const renderChildren = () => {
         if (React.isValidElement(children)) {
             return children;
         } else {
-        return <span>{children}</span>;
+            return <span>{children}</span>;
         }
     }
-    
+
     return (
-        <li {...restProps}>{renderChildren()}</li>
+        <li onClick={onClick} {...restProps}>{renderChildren()}</li>
     )
 }
 

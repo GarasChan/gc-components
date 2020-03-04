@@ -6,7 +6,7 @@ import { addReadme } from 'storybook-readme';
 import README from '../README.md';
 
 // automatically import all files ending in *.stories.js
-const req = require.context("../stories", true, /.stories.js$/);
+const req = require.context("../stories", true, /.stories.(tsx|ts|js)$/);
 function loadStories() {
   req.keys().forEach(req);
 }

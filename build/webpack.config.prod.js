@@ -14,7 +14,7 @@ module.exports = {
     mode: 'production',
     devtool: "#source-map",
     entry: {
-        'gc-components': ['./components/index.js']
+        'gc-components': ['./components/index.ts']
     },
     output: {
         path: resolve('dist'),
@@ -26,10 +26,9 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(jsx|js)$/,
+                test: /\.(tsx|ts|js)$/,
                 include: resolve('components'),
                 exclude: resolve('node_modules'),
-                // use: ['awesome-typescript-loader']
                 use: ['babel-loader']
             },
             {
@@ -104,7 +103,7 @@ module.exports = {
         noEmitOnErrors: true
     },
     resolve: {
-        extensions: ['.jsx', '.js', '.less', '.css'] //后缀名自动补全
+        extensions: ['.tsx', '.ts', '.less', '.css'] //后缀名自动补全
     },
     externals: {
         react: {

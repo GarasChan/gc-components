@@ -23,7 +23,7 @@ module.exports = async ({ config, mode }) => {
   )
   config.module.rules.push(
     {
-      test: /\.(jsx|js)$/,
+      test: /\.(tsx|ts)$/,
       use: ['babel-loader']
     },
     {
@@ -40,6 +40,7 @@ module.exports = async ({ config, mode }) => {
         }, 'less-loader']
     }
   )
+  config.resolve.extensions.push('.tsx', '.ts', '.less', '.css');
 
   // Return the altered config
   return config;
