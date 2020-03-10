@@ -14,22 +14,24 @@ function Separator(props: SeparatorProps) {
     const { children, prefixCls = 'gc-separator', type, className, orientation, innerStyle = {}, ...restprops } = props;
 
     const cls = classNames(
-        prefixCls, 
+        prefixCls,
         {
             [`${prefixCls}-dash`]: type === 'dash',
             [`${prefixCls}-with-inner`]: children !== undefined,
-            [`${prefixCls}-vertical`]: orientation === 'vertical'
+            [`${prefixCls}-vertical`]: orientation === 'vertical',
         },
-        className
-    )
+        className,
+    );
 
     return (
         <div className={cls} {...restprops}>
-            {
-                children !== undefined && <span className={`${prefixCls}-inner`} style={innerStyle}>{children}</span>
-            }
+            {children !== undefined && (
+                <span className={`${prefixCls}-inner`} style={innerStyle}>
+                    {children}
+                </span>
+            )}
         </div>
-    )
+    );
 }
 
 export default Separator;

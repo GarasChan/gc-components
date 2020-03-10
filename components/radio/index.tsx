@@ -21,23 +21,23 @@ export interface RadioGroupReturn {
 }
 
 export interface RadioGroupProps {
-    prefixCls?: string; 
+    prefixCls?: string;
     type?: RadioProps['type'];
-    className?: string; 
-    options?: RadioGroupOption[]; 
-    defaultValue?: string; 
-    value?: string; 
-    children?: React.ReactNode; 
-    name?: string; 
+    className?: string;
+    options?: RadioGroupOption[];
+    defaultValue?: string;
+    value?: string;
+    children?: React.ReactNode;
+    name?: string;
     disabled?: boolean;
     onChange?: (option: RadioGroupReturn) => void;
 }
 
 export type RadioGroupObjOption = {
-    label?: string; 
-    value: string; 
+    label?: string;
+    value: string;
     disabled?: boolean;
-}
+};
 
 export type RadioGroupOption = RadioGroupObjOption | string;
 
@@ -45,20 +45,28 @@ export type RadioGroupOption = RadioGroupObjOption | string;
  * 复选框
  */
 const Radio = (props: RadioProps) => {
-    const { prefixCls = 'gc-radio', className = '', defaultChecked, disabled, checked: propsChecked, name, type } = props;
-    const [ checked, setChecked ] = useState('defaultChecked' in props ? !!defaultChecked : !!propsChecked);
+    const {
+        prefixCls = 'gc-radio',
+        className = '',
+        defaultChecked,
+        disabled,
+        checked: propsChecked,
+        name,
+        type,
+    } = props;
+    const [checked, setChecked] = useState('defaultChecked' in props ? !!defaultChecked : !!propsChecked);
 
     useEffect(() => {
         if ('checked' in props && props.checked !== checked) {
             setChecked(!!props.checked);
         }
-    }, [props.checked, checked])
+    }, [props.checked, checked]);
 
     const renderRadio = () => {
-        return React.Children.map(props.children, (child) => {
-            return _Util.isString(child) ? <span>{child}</span> : child
-        })
-    }
+        return React.Children.map(props.children, child => {
+            return _Util.isString(child) ? <span>{child}</span> : child;
+        });
+    };
 
     const handleChange = (e: any) => {
         const { disabled, onChange, children, defaultChecked, prefixCls, ...returnProps } = props;
@@ -66,25 +74,27 @@ const Radio = (props: RadioProps) => {
             return;
         }
         if (!('checked' in props)) {
-            setChecked(e.target.checked)
+            setChecked(e.target.checked);
         }
-        onChange && onChange({
-            ...returnProps,
-            checked: e.target.checked
-        });
-    }
+        onChange &&
+            onChange({
+                ...returnProps,
+                checked: e.target.checked,
+            });
+    };
 
     return (
         <label className={classNames(prefixCls, { [className]: className, checked, disabled })}>
             <span className={type === 'button' ? `${prefixCls}-button` : `${prefixCls}-icon`}>
-                <input type='radio' checked={checked} disabled={disabled} name={name} onChange={handleChange} />
+                <input type="radio" checked={checked} disabled={disabled} name={name} onChange={handleChange} />
                 <span className={`${prefixCls}-inner`}></span>
             </span>
-            { renderRadio() }
+            {renderRadio()}
         </label>
-    )
-}
+    );
+};
 
+// eslint-disable-next-line react/display-name
 export const RadioGroup = forwardRef((props: RadioGroupProps, ref) => {
     const { prefixCls = 'gc-radio', type, className = '', options, defaultValue, value, children, name } = props;
     if (options !== undefined && !_Util.isArray(options)) {
@@ -97,15 +107,15 @@ export const RadioGroup = forwardRef((props: RadioGroupProps, ref) => {
     useImperativeHandle(ref, () => {
         return {
             name,
-            value: checkedValue
-        }
-    })
+            value: checkedValue,
+        };
+    });
 
     useEffect(() => {
         if ('value' in props && props.value !== checkedValue) {
             setCheckedValue(props.value);
         }
-    }, [props.value, value])
+    }, [props.value, value]);
 
     const getOptions = () => {
         if (!options) {
@@ -121,11 +131,20 @@ export const RadioGroup = forwardRef((props: RadioGroupProps, ref) => {
                 return {
                     label: option,
                     value: option,
-                    disabled: !!props.disabled
-                }
+                    disabled: !!props.disabled,
+                };
             }
-        })
-    }
+        });
+    };
+
+    const handleChange = (option: RadioGroupObjOption) => {
+        const { value } = option;
+        if (!('value' in props)) {
+            setCheckedValue(value);
+        }
+        const { onChange, name } = props;
+        onChange && onChange({ name, value });
+    };
 
     const renderChildren = () => {
         if (children !== undefined) {
@@ -135,44 +154,40 @@ export const RadioGroup = forwardRef((props: RadioGroupProps, ref) => {
                     type,
                     checked: value === checkedValue,
                     onChange: handleChange,
-                    name
-                })
+                    name,
+                });
             });
         } else {
             return getOptions().map(option => {
                 const { label, value, disabled } = option;
                 return (
-                    <Radio 
+                    <Radio
                         prefixCls={prefixCls}
                         type={type}
-                        key={value.toString()} 
-                        checked={checkedValue === value} 
+                        key={value.toString()}
+                        checked={checkedValue === value}
                         disabled={disabled}
-                        value={value} 
+                        value={value}
                         name={name}
                         onChange={handleChange}
                     >
                         {label}
                     </Radio>
-                )
-            })
+                );
+            });
         }
-    }
-
-    const handleChange = (option: RadioGroupObjOption) => {
-        const { value } = option;
-        if (!('value' in props)) {
-            setCheckedValue(value);
-        }
-        const { onChange, name } = props;
-        onChange && onChange({ name, value });
-    }
+    };
 
     return (
-        <div className={classNames(`${prefixCls}-group`, {[`${prefixCls}-group-button`]: type === 'button', [className]: className})}>
+        <div
+            className={classNames(`${prefixCls}-group`, {
+                [`${prefixCls}-group-button`]: type === 'button',
+                [className]: className,
+            })}
+        >
             {renderChildren()}
         </div>
-    )
-})
+    );
+});
 
 export default Radio;

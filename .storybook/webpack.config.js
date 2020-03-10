@@ -23,7 +23,7 @@ module.exports = async ({ config, mode }) => {
   )
   config.module.rules.push(
     {
-      test: /\.(tsx|ts)$/,
+      test: /\.(tsx|ts|js)$/,
       use: ['babel-loader']
     },
     {

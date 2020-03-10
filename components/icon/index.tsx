@@ -11,12 +11,9 @@ export interface IconProps {
 
 const Icon = (props: IconProps) => {
     const { type, className = '', prefixCls = 'gc-icon', ...restProps } = props;
-    const cls = classNames(
-        prefixCls, 
-        { 
-            [className]: className
-        }
-    )
+    const cls = classNames(prefixCls, {
+        [className]: className,
+    });
 
     return (
         <i className={cls} {...restProps}>
@@ -24,7 +21,7 @@ const Icon = (props: IconProps) => {
                 <use xlinkHref={`#gc-icons-${type}`}></use>
             </svg>
         </i>
-    )
-}
+    );
+};
 
 export default Icon;

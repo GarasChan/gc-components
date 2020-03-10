@@ -16,12 +16,12 @@ const _Util = {
     },
 
     filterProps: (props: any = {}, filter: string[] = []) => {
-        let newProps = {...props};
+        const newProps = { ...props };
         filter.forEach((item: string) => {
             delete newProps[item];
         });
         return newProps;
-    }
-}
+    },
+};
 
 export default _Util;
