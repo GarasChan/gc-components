@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs';
-import { Popup, Button } from '../../components/index';
-import '../../components/popup/style';
+import { Tooltip, Button } from '../../components';
+import '../../components/tooltip/style';
 
-storiesOf('Popup', module)
+storiesOf('Tooltip', module)
     .addDecorator(withKnobs)
     .add('Simple', () => {
         const placementOptions = {
@@ -21,27 +21,20 @@ storiesOf('Popup', module)
             right: 'right',
             rightBottom: 'rightBottom',
         };
-        const actionOptions = {
+        const triggerOptions = {
             hover: 'hover',
             click: 'click',
             focus: 'focus',
-            contextMenu: 'contextMenu',
         };
-        const action = select('action', actionOptions, 'click');
         return (
             <div className="demo center" style={{ marginTop: '150px' }}>
-                <Popup
-                    trigger={action}
+                <Tooltip
+                    overlay="我是 Tooltip"
+                    trigger={select('trigger', triggerOptions, 'hover')}
                     placement={select('placement', placementOptions, 'top')}
-                    overlay={
-                        <img
-                            style={{ width: '100px', height: '100px' }}
-                            src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                        />
-                    }
                 >
-                    <Button theme="primary">{action}</Button>
-                </Popup>
+                    <Button theme="primary">测试按钮</Button>
+                </Tooltip>
             </div>
         );
     });

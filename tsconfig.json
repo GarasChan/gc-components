@@ -14,9 +14,10 @@
     },
     "include": [
         "components",
-        "stories"
+        // "stories"
     ],
     "exclude": [
-        "components/**/*.js"
+        "components/assets/font/iconfont.js",
+        "node_modules"
     ]
 }

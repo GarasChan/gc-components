@@ -1,41 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import classNames from 'classnames';
 import Tooltip from 'rc-tooltip';
 import { TooltipProps } from 'rc-tooltip/es/Tooltip';
 
 export interface PopupProps extends TooltipProps {
     defaultVisible?: boolean;
     visible?: boolean;
-    withArrow?: boolean;
 }
 
-function Popup(props: PopupProps) {
+const Popup = (props: PopupProps): React.ReactElement => {
     const {
         prefixCls = 'gc-popup',
         trigger = 'click',
+        transitionName = 'gc-zoom',
+        placement = 'top',
         defaultVisible,
         visible: overlayVisible,
-        placement = 'top',
-        withArrow = false,
         overlay,
         children,
+        onVisibleChange,
         ...restProps
     } = props;
 
     const [visible, setVisible] = useState('visible' in props ? !!overlayVisible : !!defaultVisible);
 
     useEffect(() => {
-        if ('visible' in props && visible !== overlayVisible) {
+        if (overlayVisible !== undefined && visible !== overlayVisible) {
             setVisible(!!overlayVisible);
         }
-    }, [overlayVisible]);
+    }, [overlayVisible, visible]);
 
-    const handleVisibleChange = (visible: boolean) => {
-        const { onVisibleChange } = props;
+    const handleVisibleChange = (visible: boolean): void => {
         if (!('visible' in props)) {
             setVisible(visible);
         }
-        onVisibleChange && onVisibleChange(visible);
+        onVisibleChange?.(visible);
     };
 
     return (
@@ -43,9 +41,8 @@ function Popup(props: PopupProps) {
             {...restProps}
             prefixCls={prefixCls}
             trigger={trigger}
-            overlayClassName={classNames({ [`${prefixCls}-with-arrow`]: withArrow })}
             placement={placement}
-            transitionName="gc-zoom"
+            transitionName={transitionName}
             onVisibleChange={handleVisibleChange}
             visible={visible}
             overlay={overlay}
@@ -53,6 +50,6 @@ function Popup(props: PopupProps) {
             {children}
         </Tooltip>
     );
-}
+};
 
 export default Popup;

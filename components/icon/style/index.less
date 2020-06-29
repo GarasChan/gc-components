@@ -1,17 +1,22 @@
 @import '../../assets/style/themes/default.less';
 
 @icon-prefixCls: gc-icon;
+@icon-color: currentColor;
 
 .@{icon-prefixCls} {
-    display: inline-block;
-    line-height: 0;
-    font-size: @font-icon-size;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-size: @font-size-lg;
+    fill: @icon-color;
 
     svg {
         width: 1em;
         height: 1em;
-        vertical-align: -0.15em;
-        fill: currentColor;
+        font-size: inherit;
+        fill: inherit;
         overflow: hidden;
+        vertical-align: -0.15em;
     }
 }

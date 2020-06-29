@@ -86,15 +86,14 @@ Uncaught TypeError: Cannot add property current, object is not extensible
 - [x] Button  
 - [x] Checkbox
 - [x] Radio
-- [x] Select
+- [x] Tooltip
 - [x] Popup
-- [x] Separator
+- [x] Divider
 - [ ] Input
 - [ ] Switch
 - [ ] Upload
-- [ ] Tooltip
+- [ ] Select
 - [ ] Tag
 - [ ] Tabs
 - [ ] Toast
 - [ ] Message
-- [ ] Divider

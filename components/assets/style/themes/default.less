@@ -3,10 +3,10 @@
                                 主色
 ***********************************************************************************/
 @primary-color: #0081E2;
-@primary-hover-color: #269FF0;
-@primary-active-color: #0065BD;
-@primary-select-color: #E6F8FF;
-@primary-disable-color: fade(@primary-color, 15%);
+@primary-color-hover: #269FF0;
+@primary-color-active: #0065BD;
+@primary-color-select: #E6F8FF;
+@primary-color-disabled: fade(@primary-color, 15%);
 
 /***********************************************************************************
                                 功能色
@@ -15,9 +15,9 @@
 @success-color: #53C41A;
 @warning-color: #FAAD15;
 @error-color: #F5212D;
-@error-hover-color: #FF4A4D;
-@error-active-color: #CF1120;
-@error-disable-color: fade(@error-color, 15%);
+@error-color-hover: #FF4A4D;
+@error-color-active: #CF1120;
+@error-color-disabled: fade(@error-color, 15%);
 
 /***********************************************************************************
                                 中性色
@@ -39,20 +39,19 @@
 /***********************************************************************************
                                 base
 ***********************************************************************************/
+@font-size-sm: 12px;
 @font-size: 14px;
-@font-icon-size: 16px;
+@font-size-lg: 16px;
 @white: #FFFFFF;
 @black: #000000;
 @header-color: @font-color-w0;
 @background-color: @white;
 @text-color: @font-color-w8;
-@text-secondary-color: @font-color-w16;
-@text-third-color: @font-color-w20;
+@text-color-secondary: @font-color-w16;
+@text-color-third: @font-color-w20;
 @border-color: @background-color-p30;
-@divide-color: @background-color-p28;
-@disable-color: @font-color-w24;
-@icon-active-shadow: 0px 0px 6px 1px @primary-color;
-@dashed-divide-color: @divide-color;
+@divider-color: @background-color-p28;
+@disabled-color: @font-color-w24;
 
 /***********************************************************************************
                                 overPanel

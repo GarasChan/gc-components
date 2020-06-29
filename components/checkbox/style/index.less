@@ -58,7 +58,7 @@
     }
 
     &:hover .@{checkbox-prefixCls}-inner {
-        border-color: @primary-hover-color;
+        border-color: @primary-color-hover;
     }
 
     .@{checkbox-prefixCls}-icon+span {
@@ -77,16 +77,16 @@
     }
 
     &.disabled {
-        color: @disable-color;
+        color: @disabled-color;
         cursor: not-allowed;
 
         .@{checkbox-prefixCls}-inner {
             background-color: inherit;
-            border-color: @disable-color;
+            border-color: @disabled-color;
 
             &::after {
                 opacity: 0;
-                border-color: @disable-color;
+                border-color: @disabled-color;
             }
         }
     }

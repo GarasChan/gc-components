@@ -51,129 +51,127 @@
         transform-origin: 0 50%;
     }
 
-    &-with-arrow {
-        &-arrow {
-            position: absolute;
-            border: 3px solid @overPanel-bg-3;
-        }
+    &-arrow {
+        position: absolute;
+        border: 3px solid @overPanel-bg-3;
+    }
 
-        // top
-        &-placement-topLeft {
-            transform-origin: 0 100%;
-        }
+    // top
+    &-placement-topLeft {
+        transform-origin: 0 100%;
+    }
 
-        &-placement-top {
-            transform-origin: 50% 100%;
-        }
+    &-placement-top {
+        transform-origin: 50% 100%;
+    }
 
-        &-placement-topRight {
-            transform-origin: 100% 100%;
-        }
+    &-placement-topRight {
+        transform-origin: 100% 100%;
+    }
 
-        // bottom
-        &-placement-bottomLeft {
-            transform-origin: 0 0;
-        }
+    // bottom
+    &-placement-bottomLeft {
+        transform-origin: 0 0;
+    }
 
-        &-placement-bottom {
-            transform-origin: 50% 0;
-        }
+    &-placement-bottom {
+        transform-origin: 50% 0;
+    }
 
-        &-placement-bottomRight {
-            transform-origin: 100% 0;
-        }
+    &-placement-bottomRight {
+        transform-origin: 100% 0;
+    }
 
-        // left
-        &-placement-leftTop {
-            transform-origin: 100% 0;
-        }
+    // left
+    &-placement-leftTop {
+        transform-origin: 100% 0;
+    }
 
-        &-placement-left {
-            transform-origin: 100% 50%;
-        }
+    &-placement-left {
+        transform-origin: 100% 50%;
+    }
 
-        &-placement-leftBottom {
-            transform-origin: 100% 100%;
-        }
+    &-placement-leftBottom {
+        transform-origin: 100% 100%;
+    }
 
-        // right
-        &-placement-rightTop {
-            transform-origin: 0 0;
-        }
+    // right
+    &-placement-rightTop {
+        transform-origin: 0 0;
+    }
 
-        &-placement-right {
-            transform-origin: 0 50%;
-        }
+    &-placement-right {
+        transform-origin: 0 50%;
+    }
 
-        &-placement-rightBottom {
-            transform-origin: 0 100%;
-        }
-    
-        // arrow
-        &-placement-topLeft &-arrow, 
-        &-placement-top &-arrow, 
-        &-placement-topRight &-arrow {
-            transform: translateX(-50%) rotate(45deg);
-            bottom: -3px;
-            border-color: transparent @overPanel-bg-3 @overPanel-bg-3 transparent;
-            box-shadow: @popup-top-arrow-shadow;
-        }
-    
-        &-placement-bottomLeft &-arrow, 
-        &-placement-bottom &-arrow, 
-        &-placement-bottomRight &-arrow {
-            transform: translateX(-50%) rotate(45deg);
-            top: -3px;
-            border-color: @overPanel-bg-3 transparent transparent @overPanel-bg-3;
-            box-shadow: @popup-bottom-arrow-shadow;
-        }
-    
-        &-placement-topLeft &-arrow, 
-        &-placement-bottomLeft &-arrow {
-            left: 16px;
-        }
-    
-        &-placement-top &-arrow, 
-        &-placement-bottom &-arrow {
-            left: 50%;
-        }
-    
-        &-placement-topRight &-arrow, 
-        &-placement-bottomRight &-arrow {
-            right: 16px;
-        }
-    
-        &-placement-leftTop &-arrow, 
-        &-placement-left &-arrow, 
-        &-placement-leftBottom &-arrow {
-            transform: translateY(-50%) rotate(45deg);
-            right: -3px;
-            border-color: @overPanel-bg-3 @overPanel-bg-3 transparent transparent;
-            box-shadow: @popup-left-arrow-shadow;
-        }
-    
-        &-placement-rightTop &-arrow, 
-        &-placement-right &-arrow, 
-        &-placement-rightBottom &-arrow {
-            transform: translateY(-50%) rotate(45deg);
-            left: -3px;
-            border-color: transparent transparent @overPanel-bg-3 @overPanel-bg-3;
-            box-shadow: @popup-right-arrow-shadow;
-        }
-    
-        &-placement-leftTop &-arrow, 
-        &-placement-rightTop &-arrow {
-            top: 16px;
-        }
-    
-        &-placement-left &-arrow, 
-        &-placement-right &-arrow {
-            top: 50%;
-        }
-    
-        &-placement-leftBottom &-arrow, 
-        &-placement-rightBottom &-arrow {
-            bottom: 16px;
-        }
+    &-placement-rightBottom {
+        transform-origin: 0 100%;
+    }
+
+    // arrow
+    &-placement-topLeft &-arrow, 
+    &-placement-top &-arrow, 
+    &-placement-topRight &-arrow {
+        transform: translateX(-50%) rotate(45deg);
+        bottom: -3px;
+        border-color: transparent @overPanel-bg-3 @overPanel-bg-3 transparent;
+        box-shadow: @popup-top-arrow-shadow;
+    }
+
+    &-placement-bottomLeft &-arrow, 
+    &-placement-bottom &-arrow, 
+    &-placement-bottomRight &-arrow {
+        transform: translateX(-50%) rotate(45deg);
+        top: -3px;
+        border-color: @overPanel-bg-3 transparent transparent @overPanel-bg-3;
+        box-shadow: @popup-bottom-arrow-shadow;
+    }
+
+    &-placement-topLeft &-arrow, 
+    &-placement-bottomLeft &-arrow {
+        left: 16px;
+    }
+
+    &-placement-top &-arrow, 
+    &-placement-bottom &-arrow {
+        left: 50%;
+    }
+
+    &-placement-topRight &-arrow, 
+    &-placement-bottomRight &-arrow {
+        right: 16px;
+    }
+
+    &-placement-leftTop &-arrow, 
+    &-placement-left &-arrow, 
+    &-placement-leftBottom &-arrow {
+        transform: translateY(-50%) rotate(45deg);
+        right: -3px;
+        border-color: @overPanel-bg-3 @overPanel-bg-3 transparent transparent;
+        box-shadow: @popup-left-arrow-shadow;
+    }
+
+    &-placement-rightTop &-arrow, 
+    &-placement-right &-arrow, 
+    &-placement-rightBottom &-arrow {
+        transform: translateY(-50%) rotate(45deg);
+        left: -3px;
+        border-color: transparent transparent @overPanel-bg-3 @overPanel-bg-3;
+        box-shadow: @popup-right-arrow-shadow;
+    }
+
+    &-placement-leftTop &-arrow, 
+    &-placement-rightTop &-arrow {
+        top: 16px;
+    }
+
+    &-placement-left &-arrow, 
+    &-placement-right &-arrow {
+        top: 50%;
+    }
+
+    &-placement-leftBottom &-arrow, 
+    &-placement-rightBottom &-arrow {
+        bottom: 16px;
     }
 }

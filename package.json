@@ -46,7 +46,8 @@
   "dependencies": {
     "@babel/runtime": "^7.6.3",
     "core-js": "^3.3.4",
-    "rc-tooltip": "^4.0.0-alpha.3",
+    "lodash-es": "^4.17.15",
+    "rc-tooltip": "^4.2.1",
     "react": "^16.13.0",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.13.0"
@@ -66,6 +67,7 @@
     "@storybook/addons": "^5.2.5",
     "@storybook/react": "^5.2.5",
     "@types/classnames": "^2.2.9",
+    "@types/lodash-es": "^4.17.3",
     "@types/react": "^16.9.23",
     "@types/react-custom-scrollbars": "^4.0.6",
     "@types/react-dom": "^16.9.5",
@@ -84,6 +86,7 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
     "file-loader": "^4.2.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",

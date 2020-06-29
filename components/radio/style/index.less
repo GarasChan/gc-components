@@ -55,7 +55,7 @@
     }
 
     &:hover .@{radio-prefixCls}-inner {
-        border-color: @primary-hover-color;
+        border-color: @primary-color-hover;
     }
 
     .@{radio-prefixCls}-icon + span {
@@ -74,16 +74,16 @@
     }
 
     &.disabled {
-        color: @disable-color;
+        color: @disabled-color;
         cursor: not-allowed;
 
         .@{radio-prefixCls}-inner {
-            border-color: @disable-color;
+            border-color: @disabled-color;
     
             &::after {
                 opacity: 0;
-                border-color: @disable-color;
-                background-color: @disable-color;
+                border-color: @disabled-color;
+                background-color: @disabled-color;
             }
         }
     }
@@ -128,8 +128,8 @@
         }
 
         &:hover {
-            color: @primary-hover-color;
-            border-color: @primary-hover-color;
+            color: @primary-color-hover;
+            border-color: @primary-color-hover;
             transition: all .3s;
             z-index: 1;
         }

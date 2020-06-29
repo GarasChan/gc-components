@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-export interface SeparatorProps {
+export interface DividerProps {
     children?: React.ReactNode;
     prefixCls?: string;
     type?: 'dash';
@@ -10,7 +10,7 @@ export interface SeparatorProps {
     innerStyle?: React.CSSProperties;
 }
 
-function Separator(props: SeparatorProps) {
+const Divider = (props: DividerProps): React.ReactElement => {
     const { children, prefixCls = 'gc-separator', type, className, orientation, innerStyle = {}, ...restprops } = props;
 
     const cls = classNames(
@@ -32,6 +32,6 @@ function Separator(props: SeparatorProps) {
             )}
         </div>
     );
-}
+};
 
-export default Separator;
+export default Divider;

@@ -1,87 +1,282 @@
-@import '../../assets/style/themes/default.less';
+@import '../../assets/style/mixin.less';
 @import '../../assets/style/animate.less';
 
 @button-prefixCls: gc-button;
-@buttonGroup-prefixCls: gc-button-group;
+
+// default
+@button-bg: @background-color-p24;
+@button-bg-hover: @button-bg;
+@button-bg-active: @button-bg;
+@button-bg-disabled: @button-bg;
+@button-color: @text-color;
+@button-color-hover: @primary-color-hover;
+@button-color-active: @primary-color-active;
+@button-color-disabled: @disabled-color;
+@button-border: @text-color-third;
+@button-border-hover: @primary-color-hover;
+@button-border-active: @primary-color-active;
+@button-border-disabled: @disabled-color;
+
+// primary
+@button-primary-bg: @primary-color;
+@button-primary-bg-hover: @primary-color-hover;
+@button-primary-bg-active: @primary-color-active;
+@button-primary-bg-disabled: @primary-color-disabled;
+@button-primary-color: @white;
+@button-primary-color-hover: @white;
+@button-primary-color-active: @white;
+@button-primary-color-disabled: @disabled-color;
+@button-primary-border: @text-color-third;
+@button-primary-border-hover: @primary-color-hover;
+@button-primary-border-active: @primary-color-active;
+@button-primary-border-disabled: @disabled-color;
+
+// danger
+@button-danger-bg: @error-color;
+@button-danger-bg-hover: @error-color-hover;
+@button-danger-bg-active: @error-color-active;
+@button-danger-bg-disabled: @error-color-disabled;
+@button-danger-color: @white;
+@button-danger-color-hover: @white;
+@button-danger-color-active: @white;
+@button-danger-color-disabled: @disabled-color;
+@button-danger-border: @text-color-third;
+@button-danger-border-hover: @button-danger-border;
+@button-danger-border-active: @button-danger-border;
+@button-danger-border-disabled: @disabled-color;
 
 .@{button-prefixCls} {
-    display: inline-block;
-    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     height: 32px;
-    line-height: 32px;
-    padding: 0 16px;
-    border-radius: 4px;
-    border: 1px solid @border-color;
-    text-align: center;
-    color: @text-color;
+    box-sizing: border-box;
+    padding: 0 12px;
     font-size: @font-size;
+    line-height: 1;
+    border-radius: 4px;
+    border: none;
     outline: none;
-    background-color: @white;
-    white-space: nowrap;
-    user-select: none;
     cursor: pointer;
-    transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
 
-    .@{button-prefixCls}-icon {
-        position: relative;
-        top: -0.09em;
-        vertical-align: middle;
-
-        & + span {
-            margin-left: 8px;
-        }
-    }
-
-    &.icon-only {
-        width: 32px;
-        padding: 0;
-    }
-
-    &.loading .@{button-prefixCls}-icon svg {
-        animation: gcSpin 1.5s linear infinite;
-    }
+    // 仅文本
+    background-color: transparent;
+    color: @button-color;
 
     &:hover {
-        border-color: @primary-hover-color;
-        color: @primary-hover-color;
-        transition: all .3s cubic-bezier(.645, .045, .355, 1);
+        color: @button-color-hover;
     }
 
-    &.primary {
-        background-color: @primary-color;
-        color: @white;
-        border-color: @primary-color;
-
-        &:hover {
-            border-color: @primary-hover-color;
-            background-color: @primary-hover-color;
-        }
-
-        &:active {
-            background-color: @primary-active-color;
-        }
+    &:active {
+        color: @button-color-active;
     }
 
-    &.danger {
-        background-color: @error-color;
-        color: @white;
-        border-color: @error-color;
-
-        &:hover {
-            border-color: @error-hover-color;
-            background-color: @error-hover-color;
-        }
-
-        &:active {
-            background-color: @error-active-color;
-        }
-    }
-    
-    &[disabled] {
-        background-color: @disable-color;
-        border-color: @disable-color;
-        color: @text-secondary-color;
+    &.@{button-prefixCls}-disabled {
+        color: @button-color-disabled;
         cursor: not-allowed;
+    }
+
+    .@{button-prefixCls}-loading-icon,
+    .@{button-prefixCls}-icon {
+        & + * {
+            margin-left: 4px;
+        }
+    }
+}
+
+// 链接按钮
+a.@{button-prefixCls} {
+    text-decoration: none;
+}
+
+// 文本省略号
+.@{button-prefixCls}-ellipsis {
+    .wrap-text();
+}
+
+// 横向铺满
+.@{button-prefixCls}-block {
+    display: flex;
+    width: 100%;
+}
+
+// 极小尺寸
+.@{button-prefixCls}-tiny {
+    height: 16px;
+    padding: 0 4px;
+    font-size: @font-size-sm;
+    font-weight: normal;
+}
+
+// 小尺寸
+.@{button-prefixCls}-small {
+    height: 24px;
+    padding: 0 8px;
+    font-weight: normal;
+}
+
+// 大尺寸
+.@{button-prefixCls}-large {
+    height: 40px;
+    padding: 0 16px;
+    font-size: @font-size-lg;
+}
+
+// 只有icon，没有children
+.@{button-prefixCls}-iconOnly {
+    padding: 4px;
+    height: auto;
+}
+
+// loading
+.@{button-prefixCls}-loading .@{button-prefixCls}-loading-icon {
+    animation: gcSpin 1.5s linear infinite;
+}
+
+// 填充
+.@{button-prefixCls}-fill {
+    background-color: @button-bg;
+
+    &:hover {
+        background-color: @button-bg-hover;
+    }
+
+    &:active {
+        background-color: @button-bg-active;
+    }
+
+    &.@{button-prefixCls}-disabled {
+        background-color: @button-bg-disabled;
+    }
+}
+
+// 描边
+.@{button-prefixCls}-stroke {
+    border: 1px solid @button-border;
+
+    &:hover {
+        border: 1px solid @button-border-hover;
+    }
+
+    &:active {
+        border: 1px solid @button-border-active;
+    }
+
+    &.@{button-prefixCls}-disabled {
+        border-color: @button-border-disabled;
+    }
+}
+
+// 主色调
+.@{button-prefixCls}-primary {
+    // 仅文本
+    color: @primary-color;
+
+    &:hover {
+        color: @primary-color-hover;
+    }
+
+    &:active {
+        color: @primary-color-active;
+    }
+
+    &.@{button-prefixCls}-disabled {
+        color: @primary-color-disabled;
+    }
+
+    // 填充
+    &.@{button-prefixCls}-fill {
+        background-color: @button-primary-bg;
+        color: @button-primary-color;
+
+        &:hover {
+            background-color: @button-primary-bg-hover;
+            color: @button-primary-color-hover;
+        }
+
+        &:active {
+            background-color: @button-primary-bg-active;
+            color: @button-primary-color-active;
+        }
+
+        &.@{button-prefixCls}-disabled {
+            background-color: @button-primary-bg-disabled;
+            color: @button-primary-color-disabled;
+        }
+    }
+
+    // 描边
+    &.@{button-prefixCls}-stroke {
+        border: 1px solid @button-primary-border;
+
+        &:hover {
+            border: 1px solid @button-primary-border-hover;
+        }
+
+        &:active {
+            border: 1px solid @button-primary-border-active;
+        }
+
+        &.@{button-prefixCls}-disabled {
+            border-color: @button-primary-border-disabled;
+        }
+    }
+}
+
+// 危险色调
+.@{button-prefixCls}-danger {
+    // 仅文本
+    color: @error-color;
+
+    &:hover {
+        color: @error-color-hover;
+    }
+
+    &:active {
+        color: @error-color-active;
+    }
+
+    &.@{button-prefixCls}-disabled {
+        color: @error-color-disabled;
+    }
+
+    // 填充
+    &.@{button-prefixCls}-fill {
+        background-color: @button-danger-bg;
+        color: @button-danger-color;
+
+        &:hover {
+            background-color: @button-danger-bg-hover;
+            color: @button-danger-color-hover;
+        }
+
+        &:active {
+            background-color: @button-danger-bg-active;
+            color: @button-danger-color-active;
+        }
+
+        &.@{button-prefixCls}-disabled {
+            background-color: @button-danger-bg-disabled;
+            color: @button-danger-color-disabled;
+        }
+    }
+
+    // 描边
+    &.@{button-prefixCls}-stroke {
+        border: 1px solid @button-danger-border;
+
+        &:hover {
+            border: 1px solid @button-danger-border-hover;
+        }
+
+        &:active {
+            border: 1px solid @button-danger-border-active;
+        }
+
+        &.@{button-prefixCls}-disabled {
+            border-color: @button-danger-border-disabled;
+        }
     }
 }
 
