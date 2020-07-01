@@ -18,9 +18,9 @@ const Divider = (props: DividerProps): React.ReactElement => {
         {
             [`${prefixCls}-dash`]: type === 'dash',
             [`${prefixCls}-with-inner`]: children !== undefined,
-            [`${prefixCls}-vertical`]: orientation === 'vertical',
+            [`${prefixCls}-vertical`]: orientation === 'vertical'
         },
-        className,
+        className
     );
 
     return (

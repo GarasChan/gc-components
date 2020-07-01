@@ -56,7 +56,7 @@ export function CheckboxGroup(props: CheckboxGroupProps): React.ReactNode {
                     label: option,
                     value: option,
                     disabled: !!disabled,
-                    checked: selectedValues.includes(option),
+                    checked: selectedValues.includes(option)
                 };
             }
         });

@@ -7,5 +7,5 @@ export {
     ReturnValue as CheckboxReturnValue,
     CheckboxGroup,
     CheckboxGroupProps,
-    CheckboxGroupOption,
+    CheckboxGroupOption
 };

@@ -49,20 +49,20 @@ export type ButtonProps = BaseButtonProps | AnchorProps;
 const typeToClass = {
     empty: '',
     fill: 'fill',
-    stroke: 'stroke',
+    stroke: 'stroke'
 };
 
 const themeToClass = {
     default: '',
     primary: 'primary',
-    danger: 'danger',
+    danger: 'danger'
 };
 
 const sizeToClass = {
     normal: '',
     tiny: 'tiny',
     small: 'small',
-    large: 'large',
+    large: 'large'
 };
 
 const Button = (props: ButtonProps): React.ReactElement => {
@@ -100,7 +100,7 @@ const Button = (props: ButtonProps): React.ReactElement => {
                     <span className={`${prefixCls}-ellipsis`}>{child}</span>
                 ) : (
                     child
-                ),
+                )
             ) || [];
         if ('icon' in props && icon !== undefined) {
             childList.unshift(
@@ -108,15 +108,15 @@ const Button = (props: ButtonProps): React.ReactElement => {
                     <Icon key={icon} type={icon} className={`${prefixCls}-icon`} />
                 ) : (
                     React.cloneElement(icon, {
-                        className: classNames(`${prefixCls}-icon`, icon.props.className),
+                        className: classNames(`${prefixCls}-icon`, icon.props.className)
                     })
-                ),
+                )
             );
         }
         if ('loading' in props && loading) {
             const loadingIcon = typeof loading === 'boolean' ? 'gc-icons-reload' : loading;
             childList.unshift(
-                <Icon key={`${prefixCls}-loading-icon`} type={loadingIcon} className={`${prefixCls}-loading-icon`} />,
+                <Icon key={`${prefixCls}-loading-icon`} type={loadingIcon} className={`${prefixCls}-loading-icon`} />
             );
         }
         return childList;
@@ -141,9 +141,9 @@ const Button = (props: ButtonProps): React.ReactElement => {
                 [`${prefixCls}-${typeToClass[currentType]}`]: currentType !== 'empty',
                 [`${prefixCls}-${themeToClass[theme]}`]: theme !== 'default',
                 [`${prefixCls}-loading`]: loading,
-                [`${prefixCls}-disabled`]: disabled,
+                [`${prefixCls}-disabled`]: disabled
             },
-            className,
+            className
         );
     };
 

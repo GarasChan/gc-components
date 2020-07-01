@@ -1,23 +1,26 @@
 {
     "compilerOptions": {
         "outDir": "types",
-        "allowJs": true,
-        "checkJs": true,
-        "allowSyntheticDefaultImports": true,
-        "forceConsistentCasingInFileNames": true,
+         "module": "ESNext",
+        "target": "ES5",
+        "sourceMap": true,
         "jsx": "react",
-        "noImplicitReturns": false,
+        "moduleResolution": "node",
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitReturns": true,
+        "suppressImplicitAnyIndexErrors": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "sourceMap": true,
-        "strict": true
+        "declaration": true,
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "esModuleInterop": true,
+        "allowJs": true,
+        "resolveJsonModule": true
     },
-    "include": [
-        "components",
-        // "stories"
-    ],
-    "exclude": [
-        "components/assets/font/iconfont.js",
-        "node_modules"
-    ]
+    "include": ["components"],
+    // "files": ["components/index.ts"],
+    "exclude": ["node_modules"]
 }

@@ -40,7 +40,7 @@ const Radio = (props: RadioProps): React.ReactElement => {
         value,
         htmlType,
         onChange,
-        name,
+        name
     } = props;
     const [checked, setChecked] = useState('defaultChecked' in props ? !!defaultChecked : !!propsChecked);
 
@@ -65,7 +65,7 @@ const Radio = (props: RadioProps): React.ReactElement => {
         }
         onChange?.({
             checked: e.target.checked,
-            value,
+            value
         });
     };
 

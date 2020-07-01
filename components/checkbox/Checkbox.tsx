@@ -36,7 +36,7 @@ const Checkbox = (props: CheckboxProps): React.ReactElement => {
         children,
         onChange,
         value,
-        name,
+        name
     } = props;
     const [checked, setChecked] = useState('defaultChecked' in props ? !!defaultChecked : !!propsChecked);
 

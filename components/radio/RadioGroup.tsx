@@ -41,7 +41,7 @@ const RadioGroup = (props: RadioGroupProps, ref: React.Ref<RadioGroupReturnValue
         value,
         children,
         onChange,
-        name,
+        name
     } = props;
 
     const [checkedValue, setCheckedValue] = useState('defaultValue' in props ? defaultValue : value);
@@ -50,9 +50,9 @@ const RadioGroup = (props: RadioGroupProps, ref: React.Ref<RadioGroupReturnValue
         ref,
         (): RadioGroupReturnValue => {
             return {
-                value: checkedValue,
+                value: checkedValue
             };
-        },
+        }
     );
 
     useEffect(() => {
@@ -75,7 +75,7 @@ const RadioGroup = (props: RadioGroupProps, ref: React.Ref<RadioGroupReturnValue
                 return {
                     label: option,
                     value: option,
-                    disabled: !!props.disabled,
+                    disabled: !!props.disabled
                 };
             }
         });
@@ -100,7 +100,7 @@ const RadioGroup = (props: RadioGroupProps, ref: React.Ref<RadioGroupReturnValue
                     type,
                     checked: value === checkedValue,
                     onChange: handleChange,
-                    name,
+                    name
                 });
             });
         } else {
@@ -133,7 +133,7 @@ const RadioGroup = (props: RadioGroupProps, ref: React.Ref<RadioGroupReturnValue
         <div
             className={classNames(`${prefixCls}-group`, {
                 [`${prefixCls}-group-button`]: type === 'button',
-                [className]: className,
+                [className]: className
             })}
         >
             {renderChildren()}

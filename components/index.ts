@@ -6,7 +6,7 @@ export {
     CheckboxProps,
     CheckboxReturnValue,
     CheckboxGroupProps,
-    CheckboxGroupOption,
+    CheckboxGroupOption
 } from './checkbox';
 export { Radio, RadioGroup, RadioProps, RadioReturnValue, RadioGroupProps, RadioGroupOption } from './radio';
 export { default as Popup, PopupProps } from './popup';

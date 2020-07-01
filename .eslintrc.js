@@ -40,7 +40,10 @@ module.exports = {
         "react-hooks/rules-of-hooks": "error",
         // 检查 effect 的依赖
         "react-hooks/exhaustive-deps": "warn",
+        // 允许使用any类型
         '@typescript-eslint/no-explicit-any': 0,
+        // 允许使用require
+        '@typescript-eslint/no-var-requires': 0,
         // 不允许出现debugger语句
         'no-debugger': 2,
         // 函数定义的时候不允许出现重复的参数

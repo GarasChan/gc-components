@@ -18,7 +18,7 @@ storiesOf('Button', module)
             size: select('size', { tiny: 'tiny', small: 'small', normal: 'normal', large: 'large' }, 'normal'),
             block: boolean('block', false),
             disabled: boolean('disabled', false),
-            onClick: action('clicked'),
+            onClick: action('clicked')
         };
 
         return (

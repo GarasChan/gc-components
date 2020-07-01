@@ -1,5 +1,6 @@
+/* eslint-disable no-irregular-whitespace */
 const path = require('path');
-let { name, version, description } = require('../package');
+const { name, version, description } = require('../package.json');
 
 function resolve(relativePath) {
     return path.resolve(__dirname, `../${relativePath}`);
@@ -7,16 +8,10 @@ function resolve(relativePath) {
 
 const logo = `
                           ╔═╗
-╔═╦═╦═╦═╦═╦══╦═╦═╦═╦═╦═╦══╣═╣
+╔═╦═╗ ╔═╦═╦══╦═╦═╦═╦═╦═╦══╣═╣
 ║║║╠╬═╣╠╣║║║║║║║║║║║╩╣║╠╗╔╬═║
 ╠╗╠═╝ ╚═╩═╩╩╩╣╔╩═╩╩╩═╩╩╝╚╝╚═╝
 ╚═╝　　　　　 ╚╝　　　　　　　　　　　　　　　　
-`
+`;
 
-module.exports = {
-    resolve,
-    name,
-    version,
-    description,
-    logo
-}
+module.exports = { resolve, name, version, description, logo };

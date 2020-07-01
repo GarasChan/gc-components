@@ -12,7 +12,7 @@ const ButtonGroup = (props: ButtonGroupProps): React.ReactElement => {
         <div className={classNames(`${prefixCls}-group`, className)}>
             {React.Children.map(children, (child: any) => {
                 return React.cloneElement(child, {
-                    prefixCls,
+                    prefixCls
                 });
             })}
         </div>
